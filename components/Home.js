@@ -19,6 +19,7 @@ export default class Home extends React.Component {
             onPress={() => this.props.navigation.navigate('CityList')}
           >
           </Button> */}
+        <Image source={require('../public/skyline.png')} style={styles.skyline} />
       </View >
 
     )
@@ -41,6 +42,9 @@ const styles = StyleSheet.create({
     color: '#29a8c8',
     fontFamily: 'Noteworthy',
     fontSize: 50
+  },
+  skyline: {
+    alignSelf: 'center'
   }
 
 })

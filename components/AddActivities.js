@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Image, Dimensions, StyleSheet, ImageBackground, TouchableHighlight, Alert, Text, Header } from 'react-native';
 import { Icon } from 'react-native-elements';
 import NavigationBar from 'react-native-navbar';
-import SelectActivities from './SelectActivities';
+// import SelectActivities from './SelectActivities';
 import BottomNavBar from './BottomNavBar';
 import CityHeader from './CityHeader';
 

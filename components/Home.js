@@ -38,7 +38,9 @@ const styles = StyleSheet.create({
   },
   text: {
     alignSelf: 'center',
-    color: '#29a8c8'
+    color: '#29a8c8',
+    fontFamily: 'Noteworthy',
+    fontSize: 50
   }
 
 })

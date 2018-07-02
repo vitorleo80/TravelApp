@@ -29,7 +29,6 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
   logoContainer: {
-    color: 'white'
 
   },
   logo: {
@@ -41,12 +40,14 @@ const styles = StyleSheet.create({
   text: {
     alignSelf: 'center',
     color: '#29a8c8',
-    fontFamily: 'Noteworthy',
+    // fontFamily: 'Noteworthy',
     fontSize: 50
   },
   skyline: {
     alignSelf: 'center',
-    marginBottom: 0
+    marginBottom: 0,
+    height: 300,
+    width: 370
   }
 
 })

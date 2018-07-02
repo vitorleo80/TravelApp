@@ -13,7 +13,7 @@ export default class View3 extends Component {
     return (
 
       <View>
-      <Image style={styles.city} source={{ uri: header.avatar_url }} />
+        <Image style={styles.city} source={{ uri: header.avatar_url }} />
         <Text style={styles.text}>London</Text>
       </View>
     );
@@ -26,18 +26,18 @@ const styles = StyleSheet.create({
   city: {
 
     // borderBottomWidth: 3,
-    borderColor: 'white',
+    borderColor: 'yellow',
     marginTop: 5,
     height: 100,
-    borderWidth: 5
+    borderWidth: 1
   },
   text: {
-    position: 'absolute', 
-    top: 40, 
-    left: 140, 
-    right: 0, 
-    bottom: 0, 
-    justifyContent: 'center', 
+    position: 'absolute',
+    top: 40,
+    left: 140,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
     alignItems: 'center',
     color: 'white',
     fontSize: 20,

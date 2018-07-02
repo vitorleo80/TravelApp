@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text } from 'react-native';
+import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text, Alert } from 'react-native';
 import { Font, AppLoading } from 'expo'
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
 import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
@@ -10,6 +10,7 @@ import CityHeader from './CityHeader';
 
 
 export default class AddActivities extends Component {
+
   state = {
     activities: [],
     fontsAreLoaded: false
@@ -28,62 +29,66 @@ export default class AddActivities extends Component {
     }
   }
 
-  
+
   render() {
     if (!this.state.fontsAreLoaded) {
 
-      return <AppLoading />}
+
+      return <AppLoading />
+    }
+
     
-    const component1 = () => 
-    <Button
+    const component1 = () =>
+      <Button
         buttonStyle={styles.button}
         icon={{
           name: 'call-split',
-          size: 15,
-          color: 'white'
+          size: 35,
+          color: '#00BFFF'
         }}
-      title='Map'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction }) }
-    >
-    </Button>
-    const component2 = () => 
-      <Button
-        buttonStyle={styles.button}
-        icon={{
-          name: 'view-list',
-          size: 15,
-          color: 'white'
-        }}
-        title='List'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
-      >
-      </Button>
-    const component3 = () => 
-      <Button
-        buttonStyle={styles.button}
-        icon={{
-          name: 'launch',
-          size: 15,
-          color: 'white'
-        }}
-        title='Trip'
+        // title='Map'
         onPress={() => this.props.navigation.navigate('TimeLines')}
       >
       </Button>
-   
-   const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
+    const component2 = () =>
+      <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'format-list-bulleted',
+          size: 35,
+          color: '#00BFFF'
+        }}
+        // title='List'
+        onPress={() => this.props.navigation.navigate('List')}
+      >
+      </Button>
+    const component3 = () =>
+      <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'flight-takeoff',
+          size: 35,
+          color: '#00BFFF'
+        }}
+        // title='Trip'
+        onPress={() => this.props.navigation.navigate('TimeLines')}
+      >
+      </Button>
+
+    const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
 
 
     return (
-       
+
 
       <View style={styles.container}>
-        
+
         <CityHeader />
-        
-        <ButtonGroup buttonStyle={styles.button} buttons={buttons}/>
-        
-        
+
+
+        <ButtonGroup buttonStyle={styles.button} buttons={buttons} />
+
+
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
@@ -93,11 +98,12 @@ export default class AddActivities extends Component {
                 style={styles.image}
                 source={{ uri: activity.imageUrl }}
               >
-
-                <TouchableHighlight onPress={() => { this.addActivity(activity) }}>
-                  <Icon name='attachment' color='#00aced' style={styles.addIcon} />
-                </TouchableHighlight>
                 <Text style={styles.text}>{activity.title}</Text>
+
+                <TouchableHighlight onPress={() => { this.addActivity(activity) }} style={styles.addIcon}>
+                  <Icon name='add' color='#00BFFF' />
+
+                </TouchableHighlight>
 
               </ImageBackground>
 
@@ -114,9 +120,12 @@ export default class AddActivities extends Component {
     const { activities } = this.state
     if (activities.length === 0) {
       this.setState({ activities: [activity] })
+      Alert.alert('Activity added!')
     }
     const newActivities = [...activities]
     this.setState({ activities: [...newActivities, activity] })
+    Alert.alert('Activity added!')
+
   }
 
   deleteAttraction = (i) => {
@@ -134,37 +143,46 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: '#00BFFF'
+    backgroundColor: 'black',
+    borderBottomRightRadius: 200
+
 
   },
   image: {
     flex: 2,
     height: 150,
-    borderBottomWidth: 2,
-    borderBottomColor: '#00BFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: 'yellow',
+    flexDirection: 'row'
+
   },
+
   text: {
     textAlign: 'center',
     marginTop: 80,
-    color: '#00BFFF'
+    color: '#00BFFF',
+    fontSize: 25,
   },
+
   popup: {
     justifyContent: 'center'
-
   },
+
   button: {
-    backgroundColor: 'grey',
-    borderColor: 'grey',
-    borderWidth: 5,
-    borderRadius: 10
-    
+    backgroundColor: 'black',
+    borderColor: 'yellow',
+    borderRadius: 1,
+    borderBottomRightRadius: 200
   },
   buttongroup: {
-    backgroundColor: 'grey',
-    borderColor: 'grey',
-    borderWidth: 5,
-    borderRadius: 10
+    backgroundColor: 'black',
+    borderColor: 'black',
   },
+
+  addIcon: {
+    marginLeft: 3,
+    marginTop: 120,
+  }
 });
 
 const list = [

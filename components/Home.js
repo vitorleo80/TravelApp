@@ -2,9 +2,6 @@ import React from 'react'
 import { View, Button, Image, StyleSheet, TouchableHighlight, Text } from 'react-native';
 
 
-
-
-
 export default class Home extends React.Component {
 
   render() {

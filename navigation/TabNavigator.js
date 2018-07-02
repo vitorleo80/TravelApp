@@ -9,10 +9,7 @@ import { TabNavigator } from 'react-navigation'
 export default TabNavigator(
   {
     Home: {
-      screen: Home,
-      navigationOptions: {
-        tabBarLabel: 'Home',
-      }
+      screen: Home
     },
     // TimeLines: {
     //   screen: TimeLines,

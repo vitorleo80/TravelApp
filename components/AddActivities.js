@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text } from 'react-native';
-import { Font, AppLoading } from 'expo'
-import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
-import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
+import { View, ScrollView, Image, Dimensions, StyleSheet, ImageBackground, TouchableHighlight, Alert, Text, Header } from 'react-native';
+import { Icon } from 'react-native-elements';
+import NavigationBar from 'react-native-navbar';
+// import SelectActivities from './SelectActivities';
+import BottomNavBar from './BottomNavBar';
 import CityHeader from './CityHeader';
 
 

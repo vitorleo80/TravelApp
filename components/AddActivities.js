@@ -36,10 +36,10 @@ export default class View3 extends Component {
         buttonStyle={styles.button}
         icon={{
           name: 'call-split',
-          size: 20,
-          color: 'white'
+          size: 35,
+          color: '#00BFFF'
         }}
-        title='Map'
+        // title='Map'
         onPress={() => this.props.navigation.navigate('TimeLines')}
       >
       </Button>
@@ -47,11 +47,11 @@ export default class View3 extends Component {
       <Button
         buttonStyle={styles.button}
         icon={{
-          name: 'view-list',
-          size: 15,
-          color: 'white'
+          name: 'format-list-bulleted',
+          size: 35,
+          color: '#00BFFF'
         }}
-        title='List'
+        // title='List'
         onPress={() => this.props.navigation.navigate('List')}
       >
       </Button>
@@ -59,11 +59,11 @@ export default class View3 extends Component {
       <Button
         buttonStyle={styles.button}
         icon={{
-          name: 'launch',
-          size: 15,
-          color: 'white'
+          name: 'flight-takeoff',
+          size: 35,
+          color: '#00BFFF'
         }}
-        title='Trip'
+        // title='Trip'
         onPress={() => this.props.navigation.navigate('TimeLines')}
       >
       </Button>
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: 'white'
+    backgroundColor: 'black'
 
   },
   image: {
@@ -132,24 +132,21 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     marginTop: 80,
-    color: '#00BFFF'
+    color: 'white',
+    fontSize: 25,
   },
   popup: {
     justifyContent: 'center'
-
   },
   button: {
-    backgroundColor: 'grey',
-    borderColor: 'grey',
-    borderWidth: 5,
-    borderRadius: 10
+    backgroundColor: 'black',
+    borderColor: 'black',
+    borderRadius: 0,
 
   },
   buttongroup: {
-    backgroundColor: 'grey',
-    borderColor: 'grey',
-    borderWidth: 5,
-    borderRadius: 10
+    backgroundColor: 'black',
+    borderColor: 'black',
   },
 });
 

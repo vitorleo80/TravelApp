@@ -7,16 +7,81 @@ import BottomNavBar from './BottomNavBar';
 import CityHeader from './CityHeader';
 
 
+
+
 export default class View3 extends Component {
   state = {
-    ativities: []
+    activities: [],
+    fontsAreLoaded: false
   }
+
+  async componentWillMount() {
+    try {
+      await Font.loadAsync({
+        MaterialIcons
+      });
+      this.setState({ fontsAreLoaded: true });
+    } catch (error) {
+      console.log('error loading icon fonts', error);
+    }
+  }
+
+  
   render() {
+    if (!this.state.fontsAreLoaded) {
+
+      return <AppLoading />}
+    
+    
+    const component1 = () => 
+    <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'call-split',
+          size: 15,
+          color: 'white'
+        }}
+      title='Map'
+      onPress={() => this.props.navigation.navigate('TimeLines')}
+    >
+    </Button>
+    const component2 = () => 
+      <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'view-list',
+          size: 15,
+          color: 'white'
+        }}
+        title='List'
+        onPress={() => this.props.navigation.navigate('List')}
+      >
+      </Button>
+    const component3 = () => 
+      <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'launch',
+          size: 15,
+          color: 'white'
+        }}
+        title='Trip'
+        onPress={() => this.props.navigation.navigate('TimeLines')}
+      >
+      </Button>
+   
+   const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
+
+
     return (
+       
 
       <View style={styles.container}>
-        {/* <SelectHoursDaily /> */}
+        
         <CityHeader />
+        
+        <ButtonGroup buttonStyle={styles.button} buttons={buttons}/>
+        
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
@@ -37,35 +102,18 @@ export default class View3 extends Component {
             );
           })}
         </ScrollView>
-        <BottomNavBar />
       </View>
     );
   }
-
-  // fetchData = async () => {
-
-  //   const { data } = await axios.get(`database call sorted by city`)
-  //   return data;
-
-
-  // }
-  // componentDidMount = async () => {
-  //   const { activities } = await this.fetchData()
-  // }
 
 
   addActivity = (activity) => {
     const { activities } = this.state
     if (activities.length === 0) {
       this.setState({ activities: [activity] })
-    } else {
-      const newActivities = [...activities]
-      activities.map(stateActivity => {
-        activity === stateActivity ? Aler.alert('Activity already added') : this.setState({ activities: [...newActivities, activity] })
-      })
-
     }
-
+    const newActivities = [...activities]
+    this.setState({ activities: [...newActivities, activity] })
   }
 
 }
@@ -91,7 +139,20 @@ const styles = StyleSheet.create({
   popup: {
     justifyContent: 'center'
 
-  }
+  },
+  button: {
+    backgroundColor: 'grey',
+    borderColor: 'grey',
+    borderWidth: 5,
+    borderRadius: 10
+    
+  },
+  buttongroup: {
+    backgroundColor: 'grey',
+    borderColor: 'grey',
+    borderWidth: 5,
+    borderRadius: 10
+  },
 });
 
 const list = [

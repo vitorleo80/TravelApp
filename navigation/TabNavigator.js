@@ -11,12 +11,6 @@ export default TabNavigator(
     Home: {
       screen: Home
     },
-    // CityList: {
-    //   screen: CityList,
-    //   navigationOptions: {
-    //     swipeEnabled: false
-    //   }
-    // },
     // TimeLines: {
     //   screen: TimeLines,
     //   navigationOptions: {

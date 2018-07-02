@@ -5,6 +5,7 @@ import CityList from '../components/CityList'
 import List from '../components/List'
 import TimeLines from '../components/TimeLines'
 import Home from '../components/Home'
+import AddActivities from '../components/AddActivities'
 
 
 
@@ -27,6 +28,12 @@ const RootStackNavigator = StackNavigator(
     },
     TimeLines: {
       screen: TimeLines,
+      navigationOptions: {
+        swipeEnabled: false
+      }
+    },
+    AddActivities: {
+      screen: AddActivities,
       navigationOptions: {
         swipeEnabled: false
       }

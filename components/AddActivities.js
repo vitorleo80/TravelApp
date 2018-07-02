@@ -126,8 +126,8 @@ const styles = StyleSheet.create({
   image: {
     flex: 2,
     height: 150,
-    borderBottomWidth: 2,
-    borderBottomColor: '#00BFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: 'yellow',
   },
   text: {
     textAlign: 'center',

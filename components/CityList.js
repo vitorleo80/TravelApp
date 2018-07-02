@@ -66,6 +66,8 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         width: '100%',
         height: 150,
+        borderBottomWidth: 1,
+        borderBottomColor: 'yellow',
     },
     headline: {
         fontSize: 20,

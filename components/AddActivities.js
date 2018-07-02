@@ -6,11 +6,17 @@ import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
 import CityHeader from './CityHeader';
 
 
-export default class View3 extends Component {
+
+
+
+export default class AddActivities extends Component {
+
   state = {
     activities: [],
     fontsAreLoaded: false
   }
+
+
 
   async componentWillMount() {
     try {
@@ -27,10 +33,11 @@ export default class View3 extends Component {
   render() {
     if (!this.state.fontsAreLoaded) {
 
+
       return <AppLoading />
     }
 
-
+    
     const component1 = () =>
       <Button
         buttonStyle={styles.button}
@@ -105,6 +112,7 @@ export default class View3 extends Component {
     );
   }
 
+  call = () => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction }) 
 
   addActivity = (activity) => {
     const { activities } = this.state
@@ -116,6 +124,15 @@ export default class View3 extends Component {
     this.setState({ activities: [...newActivities, activity] })
     Alert.alert('Activity added!')
 
+  }
+
+  deleteAttraction = (i) => {
+    const activities = [...this.state.activities]
+    activities.splice(i, 1)  
+    this.setState({
+      activities
+    })
+  
   }
 
 }

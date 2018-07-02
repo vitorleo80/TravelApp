@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
 
   addIcon: {
     marginLeft: 3,
-    marginTop: 120
+    marginTop: 120,
   }
 });
 

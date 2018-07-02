@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text } from 'react-native';
+import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text, Alert } from 'react-native';
 import { Font, AppLoading } from 'expo'
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
 import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
@@ -89,11 +89,12 @@ export default class View3 extends Component {
                 style={styles.image}
                 source={{ uri: activity.imageUrl }}
               >
-
-                <TouchableHighlight onPress={() => { this.addActivity(activity) }}>
-                  <Icon name='add' color='#00BFFF' style={styles.addIcon} />
-                </TouchableHighlight>
                 <Text style={styles.text}>{activity.title}</Text>
+
+                <TouchableHighlight onPress={() => { this.addActivity(activity) }} style={styles.addIcon}>
+                  <Icon name='add' color='#00BFFF' />
+
+                </TouchableHighlight>
 
               </ImageBackground>
 
@@ -109,9 +110,12 @@ export default class View3 extends Component {
     const { activities } = this.state
     if (activities.length === 0) {
       this.setState({ activities: [activity] })
+      Alert.alert('Activity added!')
     }
     const newActivities = [...activities]
     this.setState({ activities: [...newActivities, activity] })
+    Alert.alert('Activity added!')
+
   }
 
 }
@@ -120,7 +124,9 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    borderBottomRightRadius: 200
+
 
   },
   image: {
@@ -128,26 +134,36 @@ const styles = StyleSheet.create({
     height: 150,
     borderBottomWidth: 1,
     borderBottomColor: 'yellow',
+    flexDirection: 'row'
+
   },
+
   text: {
     textAlign: 'center',
     marginTop: 80,
-    color: 'white',
+    color: '#00BFFF',
     fontSize: 25,
   },
+
   popup: {
     justifyContent: 'center'
   },
+
   button: {
     backgroundColor: 'black',
-    borderColor: 'black',
-    borderRadius: 0,
-
+    borderColor: 'yellow',
+    borderRadius: 1,
+    borderBottomRightRadius: 200
   },
   buttongroup: {
     backgroundColor: 'black',
     borderColor: 'black',
   },
+
+  addIcon: {
+    marginLeft: 3,
+    marginTop: 120
+  }
 });
 
 const list = [

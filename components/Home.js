@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Button, Image, StyleSheet, TouchableHighlight, Text } from 'react-native';
-import { Font } from 'expo'
+
 
 export default class Home extends React.Component {
 

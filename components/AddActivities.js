@@ -85,7 +85,9 @@ export default class AddActivities extends Component {
 
         <CityHeader />
 
+
         <ButtonGroup buttonStyle={styles.button} buttons={buttons} />
+
 
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {

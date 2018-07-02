@@ -6,8 +6,6 @@ import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
 import CityHeader from './CityHeader';
 
 
-
-
 export default class View3 extends Component {
   state = {
     activities: [],
@@ -25,26 +23,27 @@ export default class View3 extends Component {
     }
   }
 
-  
+
   render() {
     if (!this.state.fontsAreLoaded) {
 
-      return <AppLoading />}
-    
-    
-    const component1 = () => 
-    <Button
+      return <AppLoading />
+    }
+
+
+    const component1 = () =>
+      <Button
         buttonStyle={styles.button}
         icon={{
           name: 'call-split',
-          size: 15,
+          size: 20,
           color: 'white'
         }}
-      title='Map'
-      onPress={() => this.props.navigation.navigate('TimeLines')}
-    >
-    </Button>
-    const component2 = () => 
+        title='Map'
+        onPress={() => this.props.navigation.navigate('TimeLines')}
+      >
+      </Button>
+    const component2 = () =>
       <Button
         buttonStyle={styles.button}
         icon={{
@@ -56,7 +55,7 @@ export default class View3 extends Component {
         onPress={() => this.props.navigation.navigate('List')}
       >
       </Button>
-    const component3 = () => 
+    const component3 = () =>
       <Button
         buttonStyle={styles.button}
         icon={{
@@ -68,19 +67,19 @@ export default class View3 extends Component {
         onPress={() => this.props.navigation.navigate('TimeLines')}
       >
       </Button>
-   
-   const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
+
+    const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
 
 
     return (
-       
+
 
       <View style={styles.container}>
-        
+
         <CityHeader />
-        
-        <ButtonGroup buttonStyle={styles.button} buttons={buttons}/>
-        
+
+        <ButtonGroup buttonStyle={styles.button} buttons={buttons} />
+
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
@@ -92,7 +91,7 @@ export default class View3 extends Component {
               >
 
                 <TouchableHighlight onPress={() => { this.addActivity(activity) }}>
-                  <Icon name='attachment' color='#00aced' style={styles.addIcon} />
+                  <Icon name='add' color='#00BFFF' style={styles.addIcon} />
                 </TouchableHighlight>
                 <Text style={styles.text}>{activity.title}</Text>
 
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: '#00BFFF'
+    backgroundColor: 'white'
 
   },
   image: {
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 5,
     borderRadius: 10
-    
+
   },
   buttongroup: {
     backgroundColor: 'grey',

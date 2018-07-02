@@ -1,10 +1,17 @@
 import React from 'react'
 import { View, Button, Image, StyleSheet, TouchableHighlight, Text } from 'react-native';
+import Pacifico from '../fonts/Pacifico/Pacifico-Regular.ttf'
+import { Font } from 'expo'
+import Zocial from '../node_modules/@expo/vector-icons/fonts/Zocial.ttf'
 
-
+Font.loadAsync('Zocial', '../node_modules/@expo/vector-icons/fonts/Zocial.ttf')
 
 export default class Home extends React.Component {
-
+  componentDidMount() {
+    Font.loadAsync({
+      'Pacifico': require('../fonts/Pacifico/Pacifico-Regular.ttf'),
+    });
+  }
   render() {
     return (
 
@@ -12,13 +19,7 @@ export default class Home extends React.Component {
         <TouchableHighlight style={styles.logoContainer} onPress={() => this.props.navigation.navigate('CityList')} >
           <Image style={styles.logo} source={require('../public/logo.png')} />
         </TouchableHighlight>
-        <Text style={styles.text}>Triptoon</Text>
-
-        {/* <Button
-            title='CityList'
-            onPress={() => this.props.navigation.navigate('CityList')}
-          >
-          </Button> */}
+        <Text style={styles.text}>Tripster</Text>
         <Image source={require('../public/skyline.png')} style={styles.skyline} />
       </View >
 
@@ -28,11 +29,11 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
   logoContainer: {
+    color: 'white'
 
   },
   logo: {
-
-    marginTop: 50,
+    marginTop: 0,
     alignSelf: 'stretch',
     width: 350,
     height: 300
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
     fontSize: 50
   },
   skyline: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginBottom: 0
   }
 
 })

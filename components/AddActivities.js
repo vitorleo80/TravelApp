@@ -6,9 +6,6 @@ import { Card, ListItem, Icon, ButtonGroup, Button, CustomIcon } from 'react-nat
 import CityHeader from './CityHeader';
 
 
-
-//testing
-
 export default class AddActivities extends Component {
   state = {
     items: [],

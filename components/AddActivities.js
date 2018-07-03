@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Linking, ImageBackground, TouchableHighlight, Text} from 'react-native';
+import { View, ScrollView, StyleSheet, Linking, ImageBackground, TouchableHighlight, Text } from 'react-native';
 import { Font, AppLoading } from 'expo'
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
 import { Card, ListItem, Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
@@ -7,7 +7,7 @@ import CityHeader from './CityHeader';
 
 
 
-
+//testing
 
 export default class AddActivities extends Component {
   state = {
@@ -19,14 +19,14 @@ export default class AddActivities extends Component {
 
   componentDidMount = async () => {
 
-      try {
-        const { city } = this.props.navigation.state.params
-        const { items } = await this.getPlaces(city)
-        await Font.loadAsync({
-          MaterialIcons,
-          'Pacifico-Regular': require('../assets/fonts/Pacifico-Regular.ttf')
-        });
-        this.setState({ fontsAreLoaded: true, items })
+    try {
+      const { city } = this.props.navigation.state.params
+      const { items } = await this.getPlaces(city)
+      await Font.loadAsync({
+        MaterialIcons,
+        'Pacifico-Regular': require('../assets/fonts/Pacifico-Regular.ttf')
+      });
+      this.setState({ fontsAreLoaded: true, items })
     } catch (error) {
       console.log('error loading icon fonts', error);
     }
@@ -35,25 +35,26 @@ export default class AddActivities extends Component {
 
 
 
-  
+
   render() {
     if (!this.state.fontsAreLoaded) {
 
-      return <AppLoading />}
-    
-    const component1 = () => 
-    <Button
+      return <AppLoading />
+    }
+
+    const component1 = () =>
+      <Button
         buttonStyle={styles.button}
         icon={{
           name: 'call-split',
           size: 35,
           color: '#00BFFF'
         }}
-      // title='Map'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction }) }
-    >
-    </Button>
-    const component2 = () => 
+        // title='Map'
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+      >
+      </Button>
+    const component2 = () =>
       <Button
         buttonStyle={styles.button}
         icon={{
@@ -65,7 +66,7 @@ export default class AddActivities extends Component {
         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
       >
       </Button>
-    const component3 = () => 
+    const component3 = () =>
       <Button
         buttonStyle={styles.button}
         icon={{
@@ -77,38 +78,38 @@ export default class AddActivities extends Component {
         onPress={() => this.props.navigation.navigate('TimeLines')}
       >
       </Button>
-   
-   const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
 
-    const list = this.state.items    
+    const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
+
+    const list = this.state.items
     return (
-       
+
 
       <View style={styles.container}>
-        
+
         <CityHeader />
-        
-        <ButtonGroup buttonStyle={styles.button} buttons={buttons}/>
-        
-        
+
+        <ButtonGroup buttonStyle={styles.button} buttons={buttons} />
+
+
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
 
               <Card
-              key={i}
+                key={i}
                 title={activity.title}
                 image={{ uri: activity.imageUrl }}>
                 <Text style={{ fontSize: 12, marginBottom: 10 }}>
                   {activity.description}
                 </Text>
-                
-               
+
+
 
                 {this.state.bookmark === false &&
-                <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
-                  <Icon name='bookmark-border' color='#00BFFF' style={styles.addIcon} />
-                </TouchableHighlight>}
+                  <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
+                    <Icon name='bookmark-border' color='#00BFFF' style={styles.addIcon} />
+                  </TouchableHighlight>}
 
                 {this.state.bookmark === true &&
                   <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
@@ -118,10 +119,10 @@ export default class AddActivities extends Component {
                 <TouchableHighlight onPress={() => { Linking.openURL(`${activity.link}`) }}>
                   <Icon name='map' color='#00BFFF' />
                 </TouchableHighlight>
-              
 
 
-                  
+
+
               </Card>
 
 
@@ -156,19 +157,19 @@ export default class AddActivities extends Component {
       this.setState({ activities: [activity], bookmark: true })
     }
     const newActivities = [...activities]
-    this.setState({ activities: [...newActivities, activity], bookmark:true })
+    this.setState({ activities: [...newActivities, activity], bookmark: true })
 
   }
 
   deleteAttraction = (activity) => {
     const activities = [...this.state.activities]
     const index = activities.indexOf(activity)
-    activities.splice(index, 1)  
+    activities.splice(index, 1)
     this.setState({
       activities,
       bookmark: false
     })
-  
+
   }
 
   getPlaces = async (city) => {
@@ -222,7 +223,7 @@ const styles = StyleSheet.create({
     borderColor: 'yellow',
     borderRadius: 1,
     borderBottomRightRadius: 200
-    
+
   },
   buttongroup: {
     backgroundColor: 'black',

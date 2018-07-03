@@ -11,15 +11,14 @@ export default class AddActivities extends Component {
   state = {
     items: [],
     activities: [],
-    fontsAreLoaded: false,
-    bookmark: false
+    fontsAreLoaded: false
   }
 
   componentDidMount = async () => {
 
     try {
       const { city } = this.props.navigation.state.params
-      let { items } = await this.getPlaces(city)
+      const { items } = await this.getPlaces(city)
       await Font.loadAsync({
         MaterialIcons,
         'Pacifico-Regular': require('../assets/fonts/Pacifico-Regular.ttf')
@@ -39,10 +38,7 @@ export default class AddActivities extends Component {
 
       return <AppLoading />
     }
-
-
     const { city } = this.props.navigation.state.params
-
     const component1 = () =>
       <Button
         buttonStyle={styles.button}
@@ -64,7 +60,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='List'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city })}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
       >
       </Button>
     const component3 = () =>
@@ -76,25 +72,20 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='Trip'
-        onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city })}
+        onPress={() => this.props.navigation.navigate('TimeLines')}
       >
       </Button>
-   
+
     const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
-    
-    
-    const list = this.state.items    
-    
+
+    const list = this.state.items
     return (
 
 
       <View style={styles.container}>
-        
-        <CityHeader city={city}/>
-        
-        <ButtonGroup buttonStyle={styles.button} buttons={buttons}/>
-        
-        
+
+        <CityHeader city={city} />
+        <ButtonGroup buttonStyle={styles.button} buttons={buttons} />
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
@@ -107,23 +98,27 @@ export default class AddActivities extends Component {
                   {activity.description}
                 </Text>
 
+                <View style={styles.IconContainer}>
+
+                  <TouchableHighlight style={styles.mapIconContainer} onPress={() => { Linking.openURL(`${activity.link}`) }}>
+                    <Icon name='location-on' color='#3a7daf' size={30} style={styles.mapIcon} />
+                  </TouchableHighlight>
+
+                  {activity.bookmark === false &&
+                    <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
+                      <Icon name='control-point' color='#3a7daf' size={30} style={styles.addIcon} />
+                    </TouchableHighlight>}
+
+                  {activity.bookmark === true &&
+                    <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
+                      <Icon name='delete-forever' color='#3a7daf' size={30} style={styles.addIcon} />
+                    </TouchableHighlight>}
+                </View>
 
 
-                {activity.bookmark === false &&
-                  <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
-                    <Icon name='bookmark-border' color='#00BFFF' style={styles.addIcon} />
-                  </TouchableHighlight>}
-
-                {activity.bookmark === true &&
-                  <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
-                    <Icon name='bookmark' color='#00BFFF' style={styles.addIcon} />
-                  </TouchableHighlight>}
-
-                <TouchableHighlight onPress={() => { Linking.openURL(`${activity.link}`) }}>
-                  <Icon name='map' color='#00BFFF' />
-                </TouchableHighlight>
               </Card>
-            )
+
+            );
           })}
         </ScrollView>
 
@@ -222,5 +217,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
   },
+
 
 });

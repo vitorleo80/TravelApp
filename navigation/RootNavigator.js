@@ -5,6 +5,7 @@ import CityList from '../components/CityList'
 import List from '../components/List'
 import AddActivities from '../components/AddActivities'
 import TimeLines from '../components/TimeLines'
+import Home from '../components/Home'
 
 
 

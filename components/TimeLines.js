@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default class TimeLines extends React.Component {
     state = {
-        activities:{},
+        activities: {},
         // limit: 2,
         timeline: [],
         buttons: [],
@@ -15,49 +15,51 @@ export default class TimeLines extends React.Component {
     }
 
     componentDidMount() {
-        
-        const {city, activities} = this.props.navigation.state.params;
+
+        const { city, activities } = this.props.navigation.state.params;
         const hotel = hotels[city];
         const postBody = {
             startPoint: hotel,
-            activities: activities, 
+            activities: activities,
             noPerDay: 3
         };
         return axios.post('https://be-travel-planning-app.herokuapp.com/api/itinerary', postBody)
-        .then(({data}) => this.setState({activities: data, buttons: data.buttons}))
-        .catch(err => console.log(err));
+            .then(({ data }) => this.setState({ activities: data, buttons: data.buttons }))
+            .catch(err => console.log(err));
     }
 
 
     render() {
-    
-        const {buttons} = this.state
-        
+
+        const { buttons } = this.state
+
         return (
             <View style={styles.container}>
 
-                
+
 
                 {this.state.timeline.length >= 1 &&
                     <SingleTimeLine timeline={this.state.timeline} generateTimeLine={this.state.generateTimeLine} />
                 }
-                
-                
-                
-            {this.state.buttons.length >= 1 &&
-            <ButtonGroup
-                onPress={this.generateTimeLine}
-                selectedIndex={this.state.selectedIndex}
-                buttons={buttons}
-                containerStyle={{ height: 50 }}
-            />}
-                 
+
+
+
+                {this.state.buttons.length >= 1 &&
+                    <ButtonGroup
+                        onPress={this.generateTimeLine}
+                        selectedIndex={this.state.selectedIndex}
+                        buttons={buttons}
+                        containerStyle={{ height: 50 }}
+                        buttonStyle={{ backgroundColor: '#3a7daf' }}
+                        textStyle={{ fontWeight: 'bold', color: 'white', }}
+                    />}
+
             </View>
         );
     }
     generateTimeLine = (selectedIndex) => {
         this.setState({ selectedIndex })
-        const timeline = [...this.state.activities[`Day${selectedIndex+1}`]]
+        const timeline = [...this.state.activities[`Day${selectedIndex + 1}`]]
         this.setState({ timeline })
     }
 
@@ -68,13 +70,11 @@ export default class TimeLines extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
-        paddingTop: 65,
         backgroundColor: 'white'
     },
     list: {
         flex: 1,
-        marginTop: 20,
+        // marginTop: 20,
     },
     title: {
         fontSize: 16,

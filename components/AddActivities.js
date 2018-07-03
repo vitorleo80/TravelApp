@@ -99,19 +99,25 @@ export default class AddActivities extends Component {
                   {activity.description}
                 </Text>
 
-                {this.state.bookmark === false &&
-                  <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
-                    <Icon name='control-point' color='#3a7daf' size={30} style={styles.addIcon} />
-                  </TouchableHighlight>}
+                <View style={styles.IconContainer}>
 
-                {this.state.bookmark === true &&
-                  <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
-                    <Icon name='delete-forever' color='#3a7daf' size={30} style={styles.addIcon} />
-                  </TouchableHighlight>}
+                  <TouchableHighlight style={styles.mapIconContainer} onPress={() => { Linking.openURL(`${activity.link}`) }}>
+                    <Icon name='location-on' color='#3a7daf' size={30} style={styles.mapIcon} />
+                  </TouchableHighlight>
 
-                <TouchableHighlight onPress={() => { Linking.openURL(`${activity.link}`) }}>
-                  <Icon name='location-on' color='#3a7daf' size={30} />
-                </TouchableHighlight>
+                  {this.state.bookmark === false &&
+                    <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
+                      <Icon name='control-point' color='#3a7daf' size={30} style={styles.addIcon} />
+                    </TouchableHighlight>}
+
+                  {this.state.bookmark === true &&
+                    <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
+                      <Icon name='delete-forever' color='#3a7daf' size={30} style={styles.addIcon} />
+                    </TouchableHighlight>}
+
+
+                </View>
+
 
               </Card>
 
@@ -205,8 +211,14 @@ const styles = StyleSheet.create({
   },
 
   addIcon: {
-    marginLeft: 300
+    marginRight: 0
 
-  }
+  },
+  IconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+
+  },
+
 
 });

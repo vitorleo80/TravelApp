@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Linking, ImageBackground, TouchableHighlight, Text } from 'react-native';
-import { Font, AppLoading } from 'expo'
-import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
+import { Font, AppLoading } from 'expo';
+import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf';
 import { Card, ListItem, Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
 import CityHeader from './CityHeader';
+import NavigationBar from 'react-native-navbar';
 
 
 export default class AddActivities extends Component {
@@ -45,7 +46,7 @@ export default class AddActivities extends Component {
         icon={{
           name: 'call-split',
           size: 35,
-          color: '#00BFFF'
+          color: '#3a7daf'
         }}
         // title='Map'
         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
@@ -57,7 +58,7 @@ export default class AddActivities extends Component {
         icon={{
           name: 'format-list-bulleted',
           size: 35,
-          color: '#00BFFF'
+          color: '#3a7daf'
         }}
         // title='List'
         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
@@ -69,7 +70,7 @@ export default class AddActivities extends Component {
         icon={{
           name: 'flight-takeoff',
           size: 35,
-          color: '#00BFFF'
+          color: '#3a7daf'
         }}
         // title='Trip'
         onPress={() => this.props.navigation.navigate('TimeLines')}
@@ -85,10 +86,7 @@ export default class AddActivities extends Component {
       <View style={styles.container}>
 
         <CityHeader />
-
         <ButtonGroup buttonStyle={styles.button} buttons={buttons} />
-
-
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
@@ -101,47 +99,26 @@ export default class AddActivities extends Component {
                   {activity.description}
                 </Text>
 
-
-
                 {this.state.bookmark === false &&
                   <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
-                    <Icon name='bookmark-border' color='#00BFFF' style={styles.addIcon} />
+                    <Icon name='bookmark-border' color='#3a7daf' style={styles.addIcon} />
                   </TouchableHighlight>}
 
                 {this.state.bookmark === true &&
                   <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
-                    <Icon name='bookmark' color='#00BFFF' style={styles.addIcon} />
+                    <Icon name='bookmark' color='#3a7daf' style={styles.addIcon} />
                   </TouchableHighlight>}
 
                 <TouchableHighlight onPress={() => { Linking.openURL(`${activity.link}`) }}>
-                  <Icon name='map' color='#00BFFF' />
+                  <Icon name='map' color='#3a7daf' />
                 </TouchableHighlight>
 
-
-
-
               </Card>
-
-
-
-
-
-              // <ImageBackground
-              //   key={i}
-              //   style={styles.image}
-              //   source={{ uri: activity.imageUrl }}
-              // >
-
-              //   <TouchableHighlight onPress={() => { this.addActivity(activity) }}>
-              //     <Icon name='add' color='#00BFFF' style={styles.addIcon} />
-              //   </TouchableHighlight>
-              //   <Text style={styles.text}>{activity.title}</Text>
-
-              // </ImageBackground>
 
             );
           })}
         </ScrollView>
+
       </View>
     );
   }
@@ -190,7 +167,7 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: 'black',
+    backgroundColor: '#3a7daf',
     borderBottomRightRadius: 200
 
 
@@ -216,15 +193,15 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     borderColor: 'yellow',
     borderRadius: 1,
-    borderBottomRightRadius: 200
+    borderBottomRightRadius: 200,
 
   },
   buttongroup: {
-    backgroundColor: 'black',
-    borderColor: 'black',
+    backgroundColor: 'white',
+    borderColor: 'white',
   },
 
   addIcon: {

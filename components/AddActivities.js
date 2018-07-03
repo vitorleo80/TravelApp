@@ -17,6 +17,7 @@ export default class AddActivities extends Component {
 
   componentDidMount = async () => {
 
+
     try {
       const { city } = this.props.navigation.state.params
       const { items } = await this.getPlaces(city)
@@ -28,6 +29,7 @@ export default class AddActivities extends Component {
     } catch (error) {
       console.log('error loading icon fonts', error);
     }
+
   }
 
 
@@ -37,11 +39,15 @@ export default class AddActivities extends Component {
   render() {
     if (!this.state.fontsAreLoaded) {
 
-      return <AppLoading />
-    }
 
-    const component1 = () =>
-      <Button
+      return <AppLoading />}
+    
+
+    const {city} = this.props.navigation.state.params
+
+    const component1 = () => 
+    <Button
+
         buttonStyle={styles.button}
         icon={{
           name: 'call-split',
@@ -61,7 +67,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='List'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city })}
       >
       </Button>
     const component3 = () =>
@@ -73,7 +79,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='Trip'
-        onPress={() => this.props.navigation.navigate('TimeLines')}
+        onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city })}
       >
       </Button>
 
@@ -99,6 +105,7 @@ export default class AddActivities extends Component {
                   {activity.description}
                 </Text>
 
+
                 <View style={styles.IconContainer}>
 
                   <TouchableHighlight style={styles.mapIconContainer} onPress={() => { Linking.openURL(`${activity.link}`) }}>
@@ -120,6 +127,7 @@ export default class AddActivities extends Component {
               </Card>
 
             );
+
           })}
         </ScrollView>
 
@@ -130,22 +138,25 @@ export default class AddActivities extends Component {
 
 
   addActivity = (activity) => {
+    activity.bookmark = true
     const { activities } = this.state
     if (activities.length === 0) {
-      this.setState({ activities: [activity], bookmark: true })
+      this.setState({ activities: [activity] })
     }
     const newActivities = [...activities]
+
     this.setState({ activities: [...newActivities, activity], bookmark: true })
+
 
   }
 
   deleteAttraction = (activity) => {
+    activity.bookmark = false
     const activities = [...this.state.activities]
     const index = activities.indexOf(activity)
     activities.splice(index, 1)
     this.setState({
-      activities,
-      bookmark: false
+      activities
     })
 
   }

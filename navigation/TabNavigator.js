@@ -15,6 +15,7 @@ export default TabNavigator(
         tabBarLabel: 'Activities',
       }
     },
+
     // List: {
     //   screen: List,
     //   navigationOptions: {
@@ -27,6 +28,7 @@ export default TabNavigator(
     //       tabBarLabel: 'View TimeLine',
     //     }
     //   },
+
   },
 
   {

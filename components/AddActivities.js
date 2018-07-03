@@ -60,7 +60,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='List'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city })}
       >
       </Button>
     const component3 = () =>
@@ -72,7 +72,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='Trip'
-        onPress={() => this.props.navigation.navigate('TimeLines')}
+        onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city })}
       >
       </Button>
 

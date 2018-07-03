@@ -21,44 +21,44 @@ export default class List extends Component {
         const { activities } = this.state
         const { city } = this.props.navigation.state.params
 
-        const component1 = () =>
-            <Button
-                buttonStyle={styles.button}
-                icon={{
-                    name: 'call-split',
-                    size: 35,
-                    color: '#3a7daf'
-                }}
-                // title='Map'
-                onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
-            >
-            </Button>
-        const component2 = () =>
-            <Button
-                buttonStyle={styles.button}
-                icon={{
-                    name: 'format-list-bulleted',
-                    size: 35,
-                    color: '#3a7daf'
-                }}
-                // title='List'
-                onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
-            >
-            </Button>
-        const component3 = () =>
-            <Button
-                buttonStyle={styles.button}
-                icon={{
-                    name: 'flight-takeoff',
-                    size: 35,
-                    color: '#3a7daf'
-                }}
-                // title='Trip'
-                onPress={() => this.props.navigation.navigate('TimeLines')}
-            >
-            </Button>
+        // const component1 = () =>
+        //     <Button
+        //         buttonStyle={styles.button}
+        //         icon={{
+        //             name: 'call-split',
+        //             size: 35,
+        //             color: '#3a7daf'
+        //         }}
+        //         // title='Map'
+        //         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+        //     >
+        //     </Button>
+        // const component2 = () =>
+        //     <Button
+        //         buttonStyle={styles.button}
+        //         icon={{
+        //             name: 'format-list-bulleted',
+        //             size: 35,
+        //             color: '#3a7daf'
+        //         }}
+        //         // title='List'
+        //         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+        //     >
+        //     </Button>
+        // const component3 = () =>
+        //     <Button
+        //         buttonStyle={styles.button}
+        //         icon={{
+        //             name: 'flight-takeoff',
+        //             size: 35,
+        //             color: '#3a7daf'
+        //         }}
+        //         // title='Trip'
+        //         onPress={() => this.props.navigation.navigate('TimeLines')}
+        //     >
+        //     </Button>
 
-        const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
+        // const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
 
 
         return (

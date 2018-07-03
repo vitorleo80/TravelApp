@@ -19,7 +19,7 @@ export default class List extends Component {
 
     render() {
         const { activities } = this.state
-        
+        const { city } = this.props.navigation.state.params
         return (
             <View>
                 {   
@@ -45,7 +45,7 @@ export default class List extends Component {
                
                     <Button
                         title='TimeLines'
-                    onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities})}
+                    onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities, city: city})}
                     >
                     </Button>
                

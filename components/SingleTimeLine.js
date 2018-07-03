@@ -53,9 +53,9 @@ export default class SingleTimeLine extends React.Component {
 
                         return ({
                             time: activity.time,
-                            title: activity.title,
+                            // title: activity.title,
                             id: activity.id,
-                            description: activity.description,
+                            description: activity.title,
                             imageUrl: activity.imageUrl
 
                         }
@@ -69,7 +69,6 @@ export default class SingleTimeLine extends React.Component {
                     lineColor='rgb(45,156,219)'
                     timeContainerStyle={{ minWidth: 52, marginTop: -5 }}
                     timeStyle={{ textAlign: 'center', backgroundColor: '#ff9797', color: 'white', padding: 5, borderRadius: 13 }}
-                    descriptionStyle={{ color: 'gray' }}
                     options={{
                         style: { paddingTop: 5 }
                     }}
@@ -156,7 +155,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingTop: 20,
         paddingBottom: 20,
-        backgroundColor: '#e6f5ff',
+        backgroundColor: '#3A7D8F',
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#D3D3D3'
@@ -168,7 +167,9 @@ const styles = StyleSheet.create({
     },
     textDescription: {
         marginLeft: 10,
-        color: 'gray'
+        fontSize: 16, 
+        color: 'white', 
+        fontWeight: 'bold'
     }
 });
 

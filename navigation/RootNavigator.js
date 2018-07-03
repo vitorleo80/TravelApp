@@ -3,8 +3,8 @@ import { StackNavigator } from 'react-navigation';
 import TabNavigator from './TabNavigator.js';
 import CityList from '../components/CityList'
 import List from '../components/List'
-import TimeLines from '../components/TimeLines'
 import AddActivities from '../components/AddActivities'
+import TimeLines from '../components/TimeLines'
 
 
 

@@ -40,7 +40,7 @@ export default class SingleTimeLine extends React.Component {
     };
 
 
-    
+
     render() {
 
         return (
@@ -65,8 +65,8 @@ export default class SingleTimeLine extends React.Component {
                     onEventPress={this.onEventPress}
                     renderDetail={this.renderDetail}
                     circleSize={20}
-                    circleColor='rgb(45,156,219)'
-                    lineColor='rgb(45,156,219)'
+                    circleColor='#3a7daf'
+                    lineColor='#3a7daf'
                     timeContainerStyle={{ minWidth: 52, marginTop: -5 }}
                     timeStyle={{ textAlign: 'center', backgroundColor: '#ff9797', color: 'white', padding: 5, borderRadius: 13 }}
                     options={{
@@ -80,6 +80,7 @@ export default class SingleTimeLine extends React.Component {
                     onCancel={this._hideDateTimePicker}
                     mode='time'
                     minuteInterval={30}
+
                 />
 
 
@@ -129,9 +130,6 @@ export default class SingleTimeLine extends React.Component {
 
 
 
-
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingTop: 20,
         paddingBottom: 20,
-        backgroundColor: '#3A7D8F',
+        backgroundColor: '#3a7daf',
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#D3D3D3'
@@ -167,10 +165,11 @@ const styles = StyleSheet.create({
     },
     textDescription: {
         marginLeft: 10,
-        fontSize: 16, 
-        color: 'white', 
+        fontSize: 16,
+        color: 'white',
         fontWeight: 'bold'
-    }
+    },
+
 });
 
 

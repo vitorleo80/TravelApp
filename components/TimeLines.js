@@ -16,19 +16,11 @@ export default class TimeLines extends React.Component {
     componentDidMount() {
         const dayParams = this.props.navigation.state.params.sliderOneValue
         const noPerDay = Array.isArray(dayParams) ? dayParams[0] : 3
-<<<<<<< HEAD
-        const {city, activities} = this.props.navigation.state.params;
-        const hotel = hotels[city];
-        const postBody = {
-            startPoint: hotel,
-            activities: activities, 
-=======
         const { city, activities } = this.props.navigation.state.params;
         const hotel = hotels[city];
         const postBody = {
             startPoint: hotel,
             activities: activities,
->>>>>>> dev
             noPerDay: noPerDay
         };
         return axios.post('https://be-travel-planning-app.herokuapp.com/api/itinerary', postBody)
@@ -111,6 +103,3 @@ const styles = StyleSheet.create({
         color: 'gray'
     }
 });
-
-
-

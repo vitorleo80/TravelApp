@@ -1,52 +1,28 @@
 import React, { Component } from 'react';
 import { View, ScrollView, ImageBackground, TouchableHighlight, StyleSheet, Text, Alert } from 'react-native';
-
-const list = [
-    {
-        name: 'london',
-        avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.30.50_PM.png'
-
-    },
-    {
-        name: 'manchester',
-        avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394297/Screen_Shot_2018-06-30_at_10.30.06_PM.png'
-
-    },
-    {
-        name: 'london',
-        avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394314/Screen_Shot_2018-06-30_at_10.29.20_PM.png'
-
-    },
-    {
-        name: 'manchester',
-        avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.28.08_PM.png'
-
-    },
-    {
-        name: 'london',
-        avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.26.46_PM.png'
-
-    }
-
-]
+import cityImg from '../utils/cityImg.json';
 
 
 export default class CityList extends Component {
+    
     render() {
+        
+        const cities = Object.keys(cityImg)
+        
         return (
 
             <View>
                 <ScrollView>
-                    {list.map((city, i) => {
+                    {cities.map((city, i) => {
                         
                         return (
-                            <TouchableHighlight key={`touch${i}`} onPress={() => this._onPressButton(`${city.name}`)} underlayColor="white">
+                            <TouchableHighlight key={`touch${i}`} onPress={() => this._onPressButton(`${city}`)} underlayColor="white">
                                 <ImageBackground
                                     key={i}
                                     style={styles.image}
-                                    source={{ uri: city.avatar_url }}
+                                    source={{ uri: cityImg[city].url }}
                                 >
-                                    <Text key={`text${i}`} style={styles.headline}>{city.name}</Text>
+                                    <Text key={`text${i}`} style={styles.headline}>{city[0].toUpperCase() + city.slice(1)}</Text>
                                 </ImageBackground>
                             </TouchableHighlight>
                         );

@@ -51,7 +51,7 @@ export default class TimeLines extends React.Component {
                 buttons={buttons}
                 containerStyle={{ height: 50 }}
             />}
-                
+                 
             </View>
         );
     }

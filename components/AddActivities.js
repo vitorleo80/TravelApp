@@ -79,17 +79,22 @@ export default class AddActivities extends Component {
         onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city })}
       >
       </Button>
-
+   
     const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
-
-    const list = this.state.items
+    
+    
+    const list = this.state.items    
+    
     return (
 
 
       <View style={styles.container}>
-
-        <CityHeader />
-        <ButtonGroup buttonStyle={styles.button} buttons={buttons} />
+        
+        <CityHeader city={city}/>
+        
+        <ButtonGroup buttonStyle={styles.button} buttons={buttons}/>
+        
+        
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
@@ -217,6 +222,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
   },
-
 
 });

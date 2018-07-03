@@ -19,7 +19,7 @@ export default class AddActivities extends Component {
 
     try {
       const { city } = this.props.navigation.state.params
-      const { items } = await this.getPlaces(city)
+      let { items } = await this.getPlaces(city)
       await Font.loadAsync({
         MaterialIcons,
         'Pacifico-Regular': require('../assets/fonts/Pacifico-Regular.ttf')
@@ -39,6 +39,9 @@ export default class AddActivities extends Component {
 
       return <AppLoading />
     }
+
+
+    const { city } = this.props.navigation.state.params
 
     const component1 = () =>
       <Button
@@ -61,7 +64,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='List'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city })}
       >
       </Button>
     const component3 = () =>
@@ -73,7 +76,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='Trip'
-        onPress={() => this.props.navigation.navigate('TimeLines')}
+        onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city })}
       >
       </Button>
 
@@ -99,27 +102,23 @@ export default class AddActivities extends Component {
                   {activity.description}
                 </Text>
 
-                <View style={styles.IconContainer}>
-
-                  <TouchableHighlight style={styles.mapIconContainer} onPress={() => { Linking.openURL(`${activity.link}`) }}>
-                    <Icon name='location-on' color='#3a7daf' size={30} style={styles.mapIcon} />
-                  </TouchableHighlight>
-
-                  {this.state.bookmark === false &&
-                    <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
-                      <Icon name='control-point' color='#3a7daf' size={30} style={styles.addIcon} />
-                    </TouchableHighlight>}
-
-                  {this.state.bookmark === true &&
-                    <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
-                      <Icon name='delete-forever' color='#3a7daf' size={30} style={styles.addIcon} />
-                    </TouchableHighlight>}
-                </View>
 
 
+                {activity.bookmark === false &&
+                  <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
+                    <Icon name='bookmark-border' color='#00BFFF' style={styles.addIcon} />
+                  </TouchableHighlight>}
+
+                {activity.bookmark === true &&
+                  <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
+                    <Icon name='bookmark' color='#00BFFF' style={styles.addIcon} />
+                  </TouchableHighlight>}
+
+                <TouchableHighlight onPress={() => { Linking.openURL(`${activity.link}`) }}>
+                  <Icon name='map' color='#00BFFF' />
+                </TouchableHighlight>
               </Card>
-
-            );
+            )
           })}
         </ScrollView>
 
@@ -130,22 +129,23 @@ export default class AddActivities extends Component {
 
 
   addActivity = (activity) => {
+    activity.bookmark = true
     const { activities } = this.state
     if (activities.length === 0) {
-      this.setState({ activities: [activity], bookmark: true })
+      this.setState({ activities: [activity] })
     }
     const newActivities = [...activities]
-    this.setState({ activities: [...newActivities, activity], bookmark: true })
+    this.setState({ activities: [...newActivities, activity] })
 
   }
 
   deleteAttraction = (activity) => {
+    activity.bookmark = false
     const activities = [...this.state.activities]
     const index = activities.indexOf(activity)
     activities.splice(index, 1)
     this.setState({
-      activities,
-      bookmark: false
+      activities
     })
 
   }

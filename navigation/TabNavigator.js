@@ -15,18 +15,7 @@ export default TabNavigator(
         tabBarLabel: 'Activities',
       }
     },
-    // List: {
-    //   screen: List,
-    //   navigationOptions: {
-    //     tabBarLabel: 'View List',
-    //   }
-    // },
-    //   TimeLines: {
-    //     screen: TimeLines,
-    //     navigationOptions: {
-    //       tabBarLabel: 'View TimeLine',
-    //     }
-    //   },
+
   },
 
   {

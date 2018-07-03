@@ -1,0 +1,18 @@
+
+{
+    "london": {
+        "url": "http://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.30.50_PM.png"
+    },
+    "manchester": {
+        "url": "http://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394297/Screen_Shot_2018-06-30_at_10.30.06_PM.png"
+    },
+    "liverpool": {
+        "url": "http://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394314/Screen_Shot_2018-06-30_at_10.29.20_PM.png"
+    },
+    "leeds": {
+        "url": "http://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.28.08_PM.png"
+    },
+    "birmingham": {
+        "url": "http://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.26.46_PM.png"
+    }
+}

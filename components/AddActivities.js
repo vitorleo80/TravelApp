@@ -101,16 +101,16 @@ export default class AddActivities extends Component {
 
                 {this.state.bookmark === false &&
                   <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
-                    <Icon name='bookmark-border' color='#3a7daf' style={styles.addIcon} />
+                    <Icon name='control-point' color='#3a7daf' size={30} style={styles.addIcon} />
                   </TouchableHighlight>}
 
                 {this.state.bookmark === true &&
                   <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
-                    <Icon name='bookmark' color='#3a7daf' style={styles.addIcon} />
+                    <Icon name='delete-forever' color='#3a7daf' size={30} style={styles.addIcon} />
                   </TouchableHighlight>}
 
                 <TouchableHighlight onPress={() => { Linking.openURL(`${activity.link}`) }}>
-                  <Icon name='map' color='#3a7daf' />
+                  <Icon name='location-on' color='#3a7daf' size={30} />
                 </TouchableHighlight>
 
               </Card>
@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
   },
 
   addIcon: {
-    marginLeft: 3,
-    marginTop: 120
+    marginLeft: 300
+
   }
 
 });

@@ -43,105 +43,11 @@ export default class TimeLines extends React.Component {
                     description: '',
                     imageUrl: ''
                 }],
-            Day2:
-                [{
-                    id: 1,
-                    title: 'CROWNE PLAZA HOTEL',
-                    time: '09:00',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 2,
-                    title: 'Manchester Arndale',
-                    time: '09:08',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 3,
-                    title: 'Palace Theatre',
-                    time: '11:14',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 4,
-                    title: 'Manchester Art Gallery',
-                    time: '13:17',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 5,
-                    title: 'CROWNE PLAZA HOTEL',
-                    time: '15:20',
-                    description: '',
-                    imageUrl: ''
-                }],
-            Day3:
-                [{
-                    id: 1,
-                    title: 'CROWNE PLAZA HOTEL',
-                    time: '09:00',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 2,
-                    title: 'John Rylands Library',
-                    time: '09:06',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 3,
-                    title: 'Museum of Science and Industry',
-                    time: '11:10',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 4,
-                    title: 'CROWNE PLAZA HOTEL',
-                    time: '13:18',
-                    description: '',
-                    imageUrl: ''
-                }],
-            Day4:
-                [{
-                    id: 1,
-                    title: 'CROWNE PLAZA HOTEL',
-                    time: '09:00',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 2,
-                    title: 'Manchester Arena',
-                    time: '09:03',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 3,
-                    title: 'The Printworks',
-                    time: '11:04',
-                    description: '',
-                    imageUrl: ''
-                },
-                {
-                    id: 4,
-                    title: 'CROWNE PLAZA HOTEL',
-                    time: '13:06',
-                    description: '',
-                    imageUrl: ''
-                }],
             buttons: ['Day 1', 'Day 2', 'Day 3', 'Day 4']
         },
         limit: 2,
         timeline: [],
-        buttons: 0,
+        buttons: [],
         selectedIndex: 0
     }
 
@@ -160,6 +66,7 @@ export default class TimeLines extends React.Component {
         return (
             <View style={styles.container}>
 
+             
                 
                 
                 

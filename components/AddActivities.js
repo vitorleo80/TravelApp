@@ -41,6 +41,9 @@ export default class AddActivities extends Component {
 
       return <AppLoading />}
     
+
+    const {city} = this.props.navigation.state.params
+
     const component1 = () => 
     <Button
         buttonStyle={styles.button}
@@ -62,7 +65,7 @@ export default class AddActivities extends Component {
           color: '#00BFFF'
         }}
         // title='List'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city })}
       >
       </Button>
     const component3 = () => 
@@ -74,7 +77,7 @@ export default class AddActivities extends Component {
           color: '#00BFFF'
         }}
         // title='Trip'
-        onPress={() => this.props.navigation.navigate('TimeLines')}
+        onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city })}
       >
       </Button>
    

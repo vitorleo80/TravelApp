@@ -8,20 +8,20 @@ import axios from 'axios';
 export default class TimeLines extends React.Component {
     state = {
         activities:{},
-        // limit: 2,
         timeline: [],
         buttons: [],
         selectedIndex: 0
     }
 
     componentDidMount() {
-        
+        const dayParams = this.props.navigation.state.params.sliderOneValue
+        const noPerDay = Array.isArray(dayParams) ? dayParams[0] : 3
         const {city, activities} = this.props.navigation.state.params;
         const hotel = hotels[city];
         const postBody = {
             startPoint: hotel,
             activities: activities, 
-            noPerDay: 3
+            noPerDay: noPerDay
         };
         return axios.post('https://be-travel-planning-app.herokuapp.com/api/itinerary', postBody)
         .then(({data}) => this.setState({activities: data, buttons: data.buttons}))

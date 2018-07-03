@@ -1,32 +1,48 @@
 import React from 'react'
-import Home from '../components/Home'
+import AddActivities from '../components/AddActivities'
 import TimeLines from '../components/TimeLines'
 import { TabNavigator } from 'react-navigation'
 
 
 
 
+
 export default TabNavigator(
   {
-    Home: {
-      screen: Home,
+    AddActivities: {
+      screen: AddActivities,
       navigationOptions: {
-        tabBarLabel: 'Home',
+        tabBarLabel: 'Activities',
       }
     },
-    
+
+    // List: {
+    //   screen: List,
+    //   navigationOptions: {
+    //     tabBarLabel: 'View List',
+    //   }
+    // },
+    //   TimeLines: {
+    //     screen: TimeLines,
+    //     navigationOptions: {
+    //       tabBarLabel: 'View TimeLine',
+    //     }
+    //   },
+
   },
+
   {
     navigationOptions: {
       header: null
     },
-    tabBarPosition: 'top',
-    initialRouteName: 'Home',
+    tabBarPosition: 'bottom',
+    // initialRouteName: 'AddActivities',
     animationEnabled: true,
     swipeEnabled: true,
     tabBarOptions: {
       style: {
-        height: 75
+        height: 35,
+        backgroundColor: 'black'
       },
     }
   }

@@ -4,16 +4,25 @@ import TabNavigator from './TabNavigator.js';
 import CityList from '../components/CityList'
 import List from '../components/List'
 import AddActivities from '../components/AddActivities'
+import Home from '../components/Home'
 import TimeLines from '../components/TimeLines'
+
 
 
 
 const RootStackNavigator = StackNavigator(
   {
-    Main: {
-      screen: TabNavigator,
+    // Main: {
+    //   screen: TabNavigator,
+    // },
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        swipeEnabled: false
+      }
     },
-     CityList: {
+
+    CityList: {
       screen: CityList,
       navigationOptions: {
         swipeEnabled: false
@@ -37,12 +46,12 @@ const RootStackNavigator = StackNavigator(
         swipeEnabled: false
       }
     },
-    
+
   }
 );
 
 export default class RootNavigator extends React.Component {
   render() {
-    return <RootStackNavigator/>;
+    return <RootStackNavigator />;
   }
 }

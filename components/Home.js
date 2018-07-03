@@ -12,9 +12,9 @@ export default class Home extends React.Component {
 
       <View>
         <TouchableHighlight style={styles.logoContainer} onPress={() => this.props.navigation.navigate('CityList')} >
-          <Image style={styles.logo} source={require('../public/logo.png')} />
+          <Image style={styles.logo} source={require('../public/logo.jpeg')} />
         </TouchableHighlight>
-        <Text style={styles.text}>Tripster</Text>
+        {/* <Text style={styles.text}>Tripster</Text> */}
         {/* <Image source={require('../public/skyline.png')} style={styles.skyline} /> */}
       </View >
 
@@ -25,17 +25,15 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   logoContainer: {
 
+
   },
   logo: {
-    marginTop: 0,
-    alignSelf: 'stretch',
-    width: 350,
-    height: 300
+    height: 570,
+    width: 380
   },
   text: {
     alignSelf: 'center',
     color: '#29a8c8',
-    // fontFamily: 'Noteworthy',
     fontSize: 50
   },
   skyline: {

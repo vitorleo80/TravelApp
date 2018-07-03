@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Image, Dimensions, StyleSheet, ImageBackground, TouchableHighlight, Alert, Text, Header, Icon } from 'react-native';
+import cityImg from '../utils/cityImg.json';
 
 
 
-
-export default class View3 extends Component {
+export default class CityHeader extends Component {
   
-  render() {
-    let header = {
-      name: 'London',
-      avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.30.50_PM.png'
-    }
-    return (
+  
 
+  render() {
+
+    const {city} = this.props
+    let header = {
+      name: city[0].toUpperCase() + city.slice(1),
+      avatar_url: cityImg[city].url
+    }
+    
+    return (
+ 
       <View>
       <Image style={styles.city} source={{ uri: header.avatar_url }} />
-        <Text style={styles.text}>London</Text>
+        <Text style={styles.text}>{header.name}</Text>
       </View>
     );
   }

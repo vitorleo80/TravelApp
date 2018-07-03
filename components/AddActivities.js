@@ -114,8 +114,6 @@ export default class AddActivities extends Component {
                     <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
                       <Icon name='delete-forever' color='#3a7daf' size={30} style={styles.addIcon} />
                     </TouchableHighlight>}
-
-
                 </View>
 
 

@@ -9,7 +9,7 @@ export default class CustomMarker extends React.Component {
     return (
       <Image
         style={styles.image}
-        source={this.props.pressed ? require('../public/logo.png') : require('../public/logo.png')}
+        source={this.props.pressed ? require('../public/marker.png') : require('../public/marker.png')}
         resizeMode='contain'
       />
     );
@@ -18,7 +18,7 @@ export default class CustomMarker extends React.Component {
 
 const styles = StyleSheet.create({
   image: {
-    height: 80,
-    width: 80
+    height: 40,
+    width: 40
   }
 });

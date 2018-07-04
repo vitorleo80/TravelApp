@@ -10,7 +10,7 @@ export default class CityHeader extends Component {
 
   render() {
 
-    const {city} = this.props
+    const {city} = this.props 
     let header = {
       name: city[0].toUpperCase() + city.slice(1),
       avatar_url: cityImg[city].url

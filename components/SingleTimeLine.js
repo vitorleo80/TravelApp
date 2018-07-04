@@ -108,7 +108,7 @@ export default class SingleTimeLine extends React.Component {
 
     onEventPress(rowData) {
 
-        openMap({ provider: 'google', query: `${rowData.title}` })
+        openMap({ provider: 'google', query: `${rowData.description}` })
     }
 
     renderTime = (rowData, sectionID, rowID) => {
@@ -125,7 +125,7 @@ export default class SingleTimeLine extends React.Component {
     }
 
     renderDetail = (rowData, sectionID, rowID) => {
-        let title = <Text style={[styles.title]}>{rowData.title}</Text>
+        let title = <Text style={[styles.title]}>{rowData.description}</Text>
         var desc = null
         if (rowData.description && rowData.imageUrl)
             desc = (

@@ -4,17 +4,21 @@ import cityImg from '../utils/cityImg.json';
 
 
 export default class CityList extends Component {
-    
+
     render() {
-        
+
         const cities = Object.keys(cityImg)
-        
+
         return (
 
             <View>
+                <View>
+
+
+                </View>
                 <ScrollView>
                     {cities.map((city, i) => {
-                        
+
                         return (
                             <TouchableHighlight key={`touch${i}`} onPress={() => this._onPressButton(`${city}`)} underlayColor="white">
                                 <ImageBackground

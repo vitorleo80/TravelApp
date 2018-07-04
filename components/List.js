@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Button } from 'react-native'
+import { Text, View, StyleSheet, Button, ScrollView } from 'react-native'
 import Swipeout from 'react-native-swipeout';
 import MultiSlider from '../node_modules/@ptomasroos/react-native-multi-slider/MultiSlider'
 import CityHeader from './CityHeader';
@@ -35,7 +35,7 @@ export default class List extends Component {
                     <View style={styles.sliders}>
                         <View style={styles.textBox}>
                             <Text>
-                                <Text style={styles.textSlide}>How Many Activities per day? </Text>
+                                <Text style={styles.textSlide}>HOW MANY ACTIVITIES PER DAY? </Text>
                                 {' '}{' '}
                                 <Text style={[styles.textSlide, this.state.sliderOneChanging && { color: 'red' }]}>{this.state.sliderOneValue}</Text>
                             </Text>
@@ -53,28 +53,29 @@ export default class List extends Component {
                         />
                     </View>
                 </View>
+                <ScrollView>
+                    {
+                        activities.length >= 1 &&
 
-                {
-                    activities.length >= 1 &&
-                    activities.map((item, i) => (
-                        <Swipeout key={i} style={styles.swipeoutView} right={[
-                            {
-                                text: 'delete',
-                                onPress: () => this.deleteAttraction(i, item),
-                                className: 'custom-class-2',
-                                backgroundColor: 'red'
-                            }
-                        ]}>
-                            <View key={`list${i}`} style={styles.swipeoutView}>
-                                < Text style={styles.text} >
-                                    {item.title}
-                                </Text>
-                            </View>
-                        </Swipeout>
-                    ))
-                }
+                        activities.map((item, i) => (
+                            <Swipeout key={i} style={styles.swipeoutView} right={[
+                                {
+                                    text: 'delete',
+                                    onPress: () => this.deleteAttraction(i, item),
+                                    className: 'custom-class-2',
+                                    backgroundColor: 'red'
+                                }
+                            ]}>
+                                <View key={`list${i}`} style={styles.swipeoutView}>
+                                    < Text style={styles.text} >
+                                        {item.title}
+                                    </Text>
+                                </View>
+                            </Swipeout>
+                        ))
+                    }
 
-
+                </ScrollView>
                 <Button
                     title='TimeLines'
                     onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities, city: city, })}
@@ -130,18 +131,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        color: 'black'
+        color: 'black',
+        fontSize: 20,
+
     },
     swipeoutView: {
         height: 80,
         backgroundColor: 'white',
+        borderWidth: .3,
+        borderColor: '#3a7daf'
 
     },
     button: {
         backgroundColor: 'white',
-        borderColor: 'blue',
-        borderRadius: 1,
-        borderBottomRightRadius: 200,
+        borderColor: '#3a7daf',
+
 
     },
     buttongroup: {

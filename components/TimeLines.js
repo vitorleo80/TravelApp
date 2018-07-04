@@ -4,13 +4,16 @@ import { ButtonGroup } from 'react-native-elements';
 import SingleTimeLine from './SingleTimeLine';
 import hotels from '../utils/hotels.json';
 import axios from 'axios';
+import CityHeader from './CityHeader'
+
 
 export default class TimeLines extends React.Component {
     state = {
         activities: {},
         timeline: [],
         buttons: [],
-        selectedIndex: 0
+        selectedIndex: 0,
+        selected: null
     }
 
     componentDidMount() {
@@ -28,18 +31,31 @@ export default class TimeLines extends React.Component {
             .catch(err => console.log(err));
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if (Object.keys(this.state.activities).length !== Object.keys(prevState.activities).length){
+            this.generateTimeLine(this.state.selectedIndex)
+        } 
+        
+    }
+
+  
+
 
     render() {
 
+       
+
         const { buttons } = this.state
+        
+        
 
         return (
             <View style={styles.container}>
 
-
+            <CityHeader city={this.props.navigation.state.params.city}/>
 
                 {this.state.timeline.length >= 1 &&
-                    <SingleTimeLine timeline={this.state.timeline} generateTimeLine={this.state.generateTimeLine} />
+                    <SingleTimeLine timeline={this.state.timeline} generateTimeLine={this.state.generateTimeLine} ajustTime={this.ajustTime}/>
                 }
 
 
@@ -52,7 +68,11 @@ export default class TimeLines extends React.Component {
                         containerStyle={{ height: 50 }}
                         buttonStyle={{ backgroundColor: '#3a7daf' }}
                         textStyle={{ fontWeight: 'bold', color: 'white', }}
-                    />}
+                    />
+                }
+
+               
+
 
             </View>
         );
@@ -63,6 +83,11 @@ export default class TimeLines extends React.Component {
         this.setState({ timeline })
     }
 
+    ajustTime = (activities) => {
+        
+        this.setState({ selected: null, timeline: activities })
+    }
+   
 
 }
 
@@ -74,7 +99,7 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        // marginTop: 20,
+        
     },
     title: {
         fontSize: 16,

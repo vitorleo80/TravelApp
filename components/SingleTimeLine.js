@@ -30,14 +30,29 @@ export default class SingleTimeLine extends React.Component {
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
     _handleDatePicked = (date) => {
-        const time = moment(date).format('hh:mm')
-        const activities = this.state.activities.map((activity) => {
+        const time = moment(date).format('HH:mm')
+        console.log(time)
+        const activities = this.props.timeline.map((activity) => {
             if (activity.id === this.state.selected.id) activity = { ...activity, time }
             return activity
+
         })
-        this.setState({ selected: null, activities })
+        
+        this.props.ajustTime(activities)
         this._hideDateTimePicker();
+       
+
     };
+
+    // _handleDatePicked = (date) => {
+    //     const time = moment(date).format('hh:mm')
+    //     const activities = this.props.timeline.map((activity) => {
+    //         if (activity.id === this.state.selected.id) activity = { ...activity, time }
+    //         return activity
+    //     })
+    //     this.props.ajustTime(activities)
+    //     this._hideDateTimePicker();
+    // };
 
 
 
@@ -65,6 +80,7 @@ export default class SingleTimeLine extends React.Component {
                     onEventPress={this.onEventPress}
                     renderDetail={this.renderDetail}
                     circleSize={20}
+                    timeContainerStyle={{ minWidth: 72 }}
                     circleColor='#3a7daf'
                     lineColor='#3a7daf'
                     timeContainerStyle={{ minWidth: 52, marginTop: -5 }}
@@ -80,6 +96,8 @@ export default class SingleTimeLine extends React.Component {
                     onCancel={this._hideDateTimePicker}
                     mode='time'
                     minuteInterval={30}
+                    is24Hour = {false}
+                    
 
                 />
 

@@ -62,7 +62,7 @@ export default class List extends Component {
                                 text: 'delete',
                                 onPress: () => this.deleteAttraction(i, item),
                                 className: 'custom-class-2',
-                                backgroundColor: '#EA0000'
+                                backgroundColor: 'red'
                             }
                         ]}>
                             <View key={`list${i}`} style={styles.swipeoutView}>
@@ -126,19 +126,20 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         marginTop: 3,
-        backgroundColor: '#d9f9b1',
+        backgroundColor: 'white',
         alignItems: 'center',
     },
     text: {
-        color: '#FFFFFF'
+        color: 'black'
     },
     swipeoutView: {
         height: 80,
-        backgroundColor: '#232221'
+        backgroundColor: 'white',
+
     },
     button: {
         backgroundColor: 'white',
-        borderColor: 'yellow',
+        borderColor: 'blue',
         borderRadius: 1,
         borderBottomRightRadius: 200,
 

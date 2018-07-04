@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
-import Swipeout from 'react-native-swipeout'; 
+import Swipeout from 'react-native-swipeout';
 import MultiSlider from '../node_modules/@ptomasroos/react-native-multi-slider/MultiSlider'
 import CityHeader from './CityHeader';
+import CustomMarker from './CustomMarker'
+
 
 
 export default class List extends Component {
-  
+
     state = {
         activities: [],
         sliderOneChanging: false,
         sliderOneValue: [3]
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const { activities } = this.props.navigation.state.params
-        this.setState({activities})
+        this.setState({ activities })
     }
-    
+
 
     render() {
         const { activities } = this.state
@@ -42,6 +44,9 @@ export default class List extends Component {
                             style={styles.slider}
                             values={this.state.sliderOneValue}
                             sliderLength={280}
+                            min={1}
+                            max={5}
+                            customMarker={CustomMarker}
                             onValuesChangeStart={this.sliderOneValuesChangeStart}
                             onValuesChange={this.sliderOneValuesChange}
                             onValuesChangeFinish={this.sliderOneValuesChangeFinish}
@@ -49,7 +54,7 @@ export default class List extends Component {
                     </View>
                 </View>
 
-                {   
+                {
                     activities.length >= 1 &&
                     activities.map((item, i) => (
                         <Swipeout key={i} style={styles.swipeoutView} right={[
@@ -69,14 +74,14 @@ export default class List extends Component {
                     ))
                 }
 
-               
-                    <Button
-                        title='TimeLines'
+
+                <Button
+                    title='TimeLines'
                     onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities, city: city, })}
-                    >
-                    </Button>
-               
-          
+                >
+                </Button>
+
+
 
             </View>
         )
@@ -113,7 +118,7 @@ export default class List extends Component {
             sliderOneChanging: false,
         });
     }
-    
+
 }
 
 

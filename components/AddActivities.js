@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
   },
   IconContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
 
   },
 

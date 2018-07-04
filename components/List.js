@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
 import Swipeout from 'react-native-swipeout'; 
-
-
+import MultiSlider from '../node_modules/@ptomasroos/react-native-multi-slider/MultiSlider'
+import CityHeader from './CityHeader';
 
 
 export default class List extends Component {
   
-    state={
-        activities:[]
+    state = {
+        activities: [],
+        sliderOneChanging: false,
+        sliderOneValue: [3]
     }
 
     componentDidMount(){
@@ -21,48 +23,32 @@ export default class List extends Component {
         const { activities } = this.state
         const { city } = this.props.navigation.state.params
 
-        // const component1 = () =>
-        //     <Button
-        //         buttonStyle={styles.button}
-        //         icon={{
-        //             name: 'call-split',
-        //             size: 35,
-        //             color: '#3a7daf'
-        //         }}
-        //         // title='Map'
-        //         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
-        //     >
-        //     </Button>
-        // const component2 = () =>
-        //     <Button
-        //         buttonStyle={styles.button}
-        //         icon={{
-        //             name: 'format-list-bulleted',
-        //             size: 35,
-        //             color: '#3a7daf'
-        //         }}
-        //         // title='List'
-        //         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
-        //     >
-        //     </Button>
-        // const component3 = () =>
-        //     <Button
-        //         buttonStyle={styles.button}
-        //         icon={{
-        //             name: 'flight-takeoff',
-        //             size: 35,
-        //             color: '#3a7daf'
-        //         }}
-        //         // title='Trip'
-        //         onPress={() => this.props.navigation.navigate('TimeLines')}
-        //     >
-        //     </Button>
-
-        // const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
-
 
         return (
             <View>
+                <CityHeader city={city} />
+
+                {/* slider */}
+                <View style={styles.container}>
+                    <View style={styles.sliders}>
+                        <View style={styles.textBox}>
+                            <Text>
+                                <Text style={styles.textSlide}>How Many Activities per day? </Text>
+                                {' '}{' '}
+                                <Text style={[styles.textSlide, this.state.sliderOneChanging && { color: 'red' }]}>{this.state.sliderOneValue}</Text>
+                            </Text>
+                        </View>
+                        <MultiSlider
+                            style={styles.slider}
+                            values={this.state.sliderOneValue}
+                            sliderLength={280}
+                            onValuesChangeStart={this.sliderOneValuesChangeStart}
+                            onValuesChange={this.sliderOneValuesChange}
+                            onValuesChangeFinish={this.sliderOneValuesChangeFinish}
+                        />
+                    </View>
+                </View>
+
                 {   
                     activities.length >= 1 &&
                     activities.map((item, i) => (
@@ -86,7 +72,7 @@ export default class List extends Component {
                
                     <Button
                         title='TimeLines'
-                    onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities, city: city})}
+                    onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities, city: city, })}
                     >
                     </Button>
                
@@ -105,6 +91,27 @@ export default class List extends Component {
             activities
         })
 
+    }
+
+    sliderOneValuesChangeStart = () => {
+        this.setState({
+            sliderOneChanging: true,
+        });
+    }
+
+    sliderOneValuesChange = (values) => {
+        let newValues = [0];
+        newValues[0] = values[0];
+        this.setState({
+            sliderOneValue: newValues,
+        });
+
+    }
+
+    sliderOneValuesChangeFinish = () => {
+        this.setState({
+            sliderOneChanging: false,
+        });
     }
     
 }

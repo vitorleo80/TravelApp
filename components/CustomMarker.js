@@ -18,7 +18,7 @@ export default class CustomMarker extends React.Component {
 
 const styles = StyleSheet.create({
   image: {
-    height: 40,
-    width: 40
+    height: 55,
+    width: 55
   }
 });

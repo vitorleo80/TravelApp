@@ -163,10 +163,14 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         marginTop: 3,
+        marginBottom: 0,
+        marginLeft: 10,
+        marginRight: 10,
         backgroundColor: 'white',
         alignItems: 'center',
         borderBottomWidth: 2,
-        borderColor: '#3a7daf'
+        borderColor: '#3a7daf',
+
     },
 
     text: {
@@ -181,7 +185,8 @@ const styles = StyleSheet.create({
         height: 80,
         backgroundColor: 'white',
         borderBottomWidth: .3,
-        borderColor: '#3a7daf'
+        borderColor: '#3a7daf',
+        margin: 10
     },
 
     button: {
@@ -196,10 +201,11 @@ const styles = StyleSheet.create({
 
     buttonTimeline: {
         backgroundColor: 'white',
-        borderColor: 'yellow',
-        borderRadius: 1,
-        borderBottomRightRadius: 200,
+        borderBottomRightRadius: 50,
+        margin: 10
+
     },
+
     textSlide: {
         fontWeight: 'bold',
         color: '#3a7daf'

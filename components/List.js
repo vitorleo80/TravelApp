@@ -46,7 +46,7 @@ export default class List extends Component {
 
 
         return (
-            <View>
+            <View style={styles.general}>
                 <CityHeader city={city} />
 
                 <Button
@@ -156,6 +156,10 @@ export default class List extends Component {
 
 const styles = StyleSheet.create({
 
+    general: {
+        backgroundColor: '#3a7daf'
+    },
+
     container: {
         padding: 10,
         marginTop: 3,
@@ -195,6 +199,10 @@ const styles = StyleSheet.create({
         borderColor: 'yellow',
         borderRadius: 1,
         borderBottomRightRadius: 200,
+    },
+    textSlide: {
+        fontWeight: 'bold',
+        color: '#3a7daf'
     }
 })
 

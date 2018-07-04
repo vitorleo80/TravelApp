@@ -150,6 +150,7 @@ export default class AddActivities extends Component {
 
   }
 
+
   getPlaces = async (city) => {
 
     try {

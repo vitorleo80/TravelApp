@@ -69,7 +69,7 @@ export default class List extends Component {
                             <Text>
                                 <Text style={styles.textSlide}>HOW MANY ACTIVITIES PER DAY? </Text>
                                 {' '}{' '}
-                                <Text style={[styles.textSlide, this.state.sliderOneChanging && { color: '#3a7daf' }]}>{this.state.sliderOneValue}</Text>
+                                <Text style={[styles.textSlide, this.state.sliderOneChanging && { fontSize: 25, color: '#3a7daf' }]}>{this.state.sliderOneValue}</Text>
                             </Text>
                         </View>
 

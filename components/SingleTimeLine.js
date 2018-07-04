@@ -37,10 +37,10 @@ export default class SingleTimeLine extends React.Component {
             return activity
 
         })
-        
+
         this.props.ajustTime(activities)
         this._hideDateTimePicker();
-       
+
 
     };
 
@@ -96,8 +96,8 @@ export default class SingleTimeLine extends React.Component {
                     onCancel={this._hideDateTimePicker}
                     mode='time'
                     minuteInterval={30}
-                    is24Hour = {false}
-                    
+                    is24Hour={false}
+
 
                 />
 
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        paddingTop: 65,
+        paddingTop: 10,
         backgroundColor: 'white'
     },
     list: {

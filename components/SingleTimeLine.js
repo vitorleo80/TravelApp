@@ -90,7 +90,7 @@ export default class SingleTimeLine extends React.Component {
                     onCancel={this._hideDateTimePicker}
                     mode='time'
                     minuteInterval={30}
-                    is24Hour = {true}
+                    is24Hour = {false}
                     
 
                 />

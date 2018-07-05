@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Linking, ImageBackground, TouchableHighlight, Text } from 'react-native';
 import { Font, AppLoading } from 'expo';
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf';
-import { Card, ListItem, Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
+import { Card, ListItem, Icon, ButtonGroup, Button, SearchBar } from 'react-native-elements';
 import CityHeader from './CityHeader';
-import NavigationBar from 'react-native-navbar';
+import PopupDialog, { DialogTitle, DialogButton} from 'react-native-popup-dialog';
+import Search from './Search'
 
 
 export default class AddActivities extends Component {
   state = {
     items: [],
     activities: [],
-    fontsAreLoaded: false
+    fontsAreLoaded: false,
+    dialogShow: false,
   }
 
   componentDidMount = async () => {
@@ -48,7 +50,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='Map'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
+        onPress={this.showScaleAnimationDialog}
       >
       </Button>
     const component2 = () =>
@@ -122,6 +124,27 @@ export default class AddActivities extends Component {
           })}
         </ScrollView>
 
+        
+        <PopupDialog
+          ref={(popupDialog) => {
+            this.scaleAnimationDialog = popupDialog;
+          }}
+          dialogTitle={<DialogTitle title="Please search your Hotel" />}
+          actions={[
+            <DialogButton
+              text="DISMISS"
+              onPress={() => {
+                this.scaleAnimationDialog.dismiss();
+              }}
+              key="button-1"
+            />,
+          ]}
+        >
+          <View>
+            <Search city={city}/>
+            </View>
+        </PopupDialog>
+        
       </View>
     );
   }
@@ -162,6 +185,10 @@ export default class AddActivities extends Component {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  showScaleAnimationDialog = () => {
+    this.scaleAnimationDialog.show();
   }
 
 

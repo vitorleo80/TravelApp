@@ -30,19 +30,41 @@ export default class SingleTimeLine extends React.Component {
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
     _handleDatePicked = (date) => {
-        const time = moment(date).format('HH:mm')
-        console.log(time)
-        const activities = this.props.timeline.map((activity) => {
-            if (activity.id === this.state.selected.id) activity = { ...activity, time }
-            return activity
 
-        })
+        let { timeline } = this.props;
+        let indexOfChangedActivity = timeline.findIndex(activity => activity.id === this.state.selected.id);
 
-        this.props.ajustTime(activities)
+        const oldTime = timeline[indexOfChangedActivity].time;
+        const newTime = moment(date).format('HH:mm');
+        const adjustmentInMinutes = findDifferenceInMinutes(oldTime, newTime);
+
+        if (adjustmentInMinutes < 0) {
+            indexOfChangedActivity = (timeline.length - 1) - indexOfChangedActivity;
+            timeline = [...timeline].reverse();
+        }
+        const adjustedTimeline = timeline.map((activity, i) => {
+            let { time } = activity;
+            if (i >= indexOfChangedActivity) time = sumTimes(time, adjustmentInMinutes);
+            return { ...activity, time };
+        });
+
+        if (adjustmentInMinutes < 0) adjustedTimeline.reverse();
+
+        this.props.ajustTime(adjustedTimeline);
         this._hideDateTimePicker();
-
-
     };
+
+    // _handleDatePicked = (date) => {
+    //     const time = moment(date).format('HH:mm')
+    //     console.log(time)
+    //     const activities = this.props.timeline.map((activity) => {
+    //         if (activity.id === this.state.selected.id) activity = { ...activity, time }
+    //         return activity
+
+    //     })
+    //     this.props.ajustTime(activities)
+    //     this._hideDateTimePicker();
+    // };
 
     // _handleDatePicked = (date) => {
     //     const time = moment(date).format('hh:mm')
@@ -190,14 +212,22 @@ const styles = StyleSheet.create({
 
 });
 
+function findDifferenceInMinutes(oldTime, newTime) {
+    const [oldHours, oldMins] = oldTime.split(':');
+    const [newHours, newMins] = newTime.split(':');
 
+    return ((newHours * 60) + (+newMins)) - ((oldHours * 60) + (+oldMins));
+}
 
-
-
-
-
-
-
-
-
-
+function sumTimes(time, adjustmentInMinutes = 0) {
+    const wholeDay = 24 * 60;
+    adjustmentInMinutes = adjustmentInMinutes % wholeDay;
+    const [hours, minutes] = time.split(':');
+    let summedTime = ((+hours * 60) + +minutes) + adjustmentInMinutes;
+    if (summedTime < 0) summedTime += wholeDay;
+    if (summedTime >= wholeDay) summedTime -= wholeDay;
+    let [newHours, newMins] = [`${Math.trunc(summedTime / 60)}`, `${summedTime % 60}`];
+    if (newHours.length === 1) newHours = '0' + newHours;
+    if (newMins.length === 1) newMins = '0' + newMins;
+    return newHours + ':' + newMins;
+}

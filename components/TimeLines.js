@@ -31,31 +31,31 @@ export default class TimeLines extends React.Component {
             .catch(err => console.log(err));
     }
 
-    componentDidUpdate(prevProps, prevState){
-        if (Object.keys(this.state.activities).length !== Object.keys(prevState.activities).length){
+    componentDidUpdate(prevProps, prevState) {
+        if (Object.keys(this.state.activities).length !== Object.keys(prevState.activities).length) {
             this.generateTimeLine(this.state.selectedIndex)
-        } 
-        
+        }
+
     }
 
-  
+
 
 
     render() {
 
-       
+
 
         const { buttons } = this.state
-        
-        
+
+
 
         return (
             <View style={styles.container}>
 
-            <CityHeader city={this.props.navigation.state.params.city}/>
+                <CityHeader city={this.props.navigation.state.params.city} />
 
                 {this.state.timeline.length >= 1 &&
-                    <SingleTimeLine timeline={this.state.timeline} generateTimeLine={this.state.generateTimeLine} ajustTime={this.ajustTime}/>
+                    <SingleTimeLine timeline={this.state.timeline} generateTimeLine={this.state.generateTimeLine} ajustTime={this.ajustTime} />
                 }
 
 
@@ -71,7 +71,7 @@ export default class TimeLines extends React.Component {
                     />
                 }
 
-               
+
 
 
             </View>
@@ -83,11 +83,19 @@ export default class TimeLines extends React.Component {
         this.setState({ timeline })
     }
 
-    ajustTime = (activities) => {
-        
-        this.setState({ selected: null, timeline: activities })
+    // ajustTime = (adjustedTimeline) => {
+    //     let { activities, selectedIndex } = this.state;
+    //     activities[`Day${selectedIndex + 1}`] = adjustedTimeline;
+
+    //     this.setState({ selected: null, timeline: adjustedTimeline, activities })
+    // }
+    ajustTime = (adjustedTimeline) => {
+        const { activities, selectedIndex } = this.state;
+        activities[`Day${selectedIndex + 1}`] = adjustedTimeline;
+
+        this.setState({ selected: null, timeline: adjustedTimeline, activities })
     }
-   
+
 
 }
 
@@ -99,7 +107,7 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
-        
+
     },
     title: {
         fontSize: 16,

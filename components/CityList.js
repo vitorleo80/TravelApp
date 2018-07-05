@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, ImageBackground, TouchableHighlight, StyleSheet, Text, Alert } from 'react-native';
+import { View, ScrollView, ImageBackground, TouchableHighlight, StyleSheet, Text, Alert, Image } from 'react-native';
 import cityImg from '../utils/cityImg.json';
 
 
@@ -14,7 +14,9 @@ export default class CityList extends Component {
             <View>
                 <View>
 
-
+                    <ImageBackground source={require('../public/header.png')} style={styles.header}>
+                        <Image source={require('../public/logo.png')} style={styles.logo} />
+                    </ImageBackground>
                 </View>
                 <ScrollView>
                     {cities.map((city, i) => {
@@ -47,6 +49,8 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         width: '100%',
         height: 150,
+        borderWidth: 1,
+        borderBottomColor: '#3a7daf'
     },
     headline: {
         fontSize: 20,
@@ -55,6 +59,14 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop: 70,
         fontWeight: 'bold'
+    },
+    header: {
+        height: 30,
 
+    },
+    logo: {
+        alignSelf: 'center',
+        height: 25,
+        width: 25
     }
 });

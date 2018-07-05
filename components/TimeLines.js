@@ -19,10 +19,10 @@ export default class TimeLines extends React.Component {
     componentDidMount() {
         const dayParams = this.props.navigation.state.params.sliderOneValue
         const noPerDay = Array.isArray(dayParams) ? dayParams[0] : 3
-        const { city, activities } = this.props.navigation.state.params;
-        const hotel = hotels[city];
+        const { city, activities, hotel } = this.props.navigation.state.params;
+        const hotelSelection = (Object.keys(hotel).length) ? hotel : hotels[city]
         const postBody = {
-            startPoint: hotel,
+            startPoint: hotelSelection,
             activities: activities,
             noPerDay: noPerDay
         };
@@ -30,6 +30,8 @@ export default class TimeLines extends React.Component {
             .then(({ data }) => this.setState({ activities: data, buttons: data.buttons }))
             .catch(err => console.log(err));
     }
+
+        
 
     componentDidUpdate(prevProps, prevState){
         if (Object.keys(this.state.activities).length !== Object.keys(prevState.activities).length){

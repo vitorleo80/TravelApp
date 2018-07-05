@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: '#553383',
+    backgroundColor: '#3a7daf',
     borderBottomRightRadius: 200
 
 

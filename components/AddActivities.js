@@ -8,12 +8,14 @@ import PopupDialog, { DialogTitle, DialogButton} from 'react-native-popup-dialog
 import Search from './Search'
 
 
+
 export default class AddActivities extends Component {
   state = {
     items: [],
     activities: [],
     fontsAreLoaded: false,
     dialogShow: false,
+    hotel:{}
   }
 
   componentDidMount = async () => {
@@ -49,7 +51,7 @@ export default class AddActivities extends Component {
           size: 35,
           color: '#3a7daf'
         }}
-        // title='Map'
+        // title='Hotel'
         onPress={this.showScaleAnimationDialog}
       >
       </Button>
@@ -62,7 +64,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='List'
-        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city })}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city, hotel: this.state.hotel })}
       >
       </Button>
     const component3 = () =>
@@ -74,7 +76,7 @@ export default class AddActivities extends Component {
           color: '#3a7daf'
         }}
         // title='Trip'
-        onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city })}
+        onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city, hotel: this.state.hotel })}
       >
       </Button>
 
@@ -124,24 +126,23 @@ export default class AddActivities extends Component {
           })}
         </ScrollView>
 
-        
-        <PopupDialog
+ <PopupDialog
           ref={(popupDialog) => {
             this.scaleAnimationDialog = popupDialog;
           }}
           dialogTitle={<DialogTitle title="Please search your Hotel" />}
-          actions={[
-            <DialogButton
-              text="DISMISS"
-              onPress={() => {
-                this.scaleAnimationDialog.dismiss();
-              }}
-              key="button-1"
-            />,
-          ]}
+          // actions={[
+          //   <DialogButton
+          //     text="DISMISS"
+          //     onPress={() => {
+          //       this.scaleAnimationDialog.dismiss();
+          //     }}
+          //     key="button-1"
+          //   />,
+          // ]}
         >
           <View>
-            <Search city={city}/>
+            <Search city={city} addHotel={this.addHotel}/>
             </View>
         </PopupDialog>
         
@@ -191,6 +192,16 @@ export default class AddActivities extends Component {
     this.scaleAnimationDialog.show();
   }
 
+  addHotel = (hotel) => {
+    console.log(hotel)
+    this.setState({hotel})
+    this.closeDialog()
+  }
+
+  closeDialog = () => {
+    this.scaleAnimationDialog.dismiss()
+  }
+
 
 }
 
@@ -198,7 +209,7 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: '#3a7daf',
+    backgroundColor: '#553383',
     borderBottomRightRadius: 200
 
 

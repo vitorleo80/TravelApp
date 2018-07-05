@@ -43,7 +43,7 @@ export default class List extends Component {
 
         const { activities } = this.state
         const { city } = this.props.navigation.state.params
-
+        const { hotel } = this.props.navigation.state.params
 
         return (
             <View style={styles.general}>
@@ -57,7 +57,7 @@ export default class List extends Component {
                         color: '#3a7daf'
                     }}
                     // title='Trip'
-                    onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities, city: city, sliderOneValue: this.state.sliderOneValue })}                >
+                    onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities, city: city, sliderOneValue: this.state.sliderOneValue , hotel: hotel})}                >
                 </Button>
 
                 {/* slider */}

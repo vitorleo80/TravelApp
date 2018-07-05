@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
-
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf';
 import { Font, AppLoading } from 'expo';
-import { Button, SearchBar } from 'react-native-elements';
+import { Button, SearchBar, Card, ListItem } from 'react-native-elements';
+import { StyleSheet, View, ScrollView, TouchableHighlight } from 'react-native';
 
 
 export default class Search extends Component {
 
     state = {
+     
         items: [],
         text: '',
         input: '',
@@ -16,17 +16,17 @@ export default class Search extends Component {
     }
 
     componentDidMount = async () => {
-
+        
         try {
             await Font.loadAsync({
-                MaterialIcons
+                MaterialIcons,
+                'Pacifico-Regular': require('../assets/fonts/Pacifico-Regular.ttf')
             });
             this.setState({ fontsAreLoaded: true })
         } catch (error) {
             console.log('error loading icon fonts', error);
         }
     }
-
 
 
 
@@ -37,8 +37,7 @@ export default class Search extends Component {
             return <AppLoading />
         }
 
-     
-
+        const list = this.state.items
 
         return (
             <View style={styles.general}>
@@ -55,105 +54,119 @@ export default class Search extends Component {
                         size: 35,
                         color: '#3a7daf'
                     }}
-                // title='Trip'
+
                     onPress={this.onClick}
                 >
                 </Button>
+                
+                <ScrollView>
+                <Card containerStyle={{ padding: 0 }} >
+                    {
+                        list.length >= 1 &&
+                        list.map((hotel, i) => {
+                            return (
+                                <TouchableHighlight key={`touch${i}`} onPress={() => this.addHotelObj(hotel)}>
+                                <ListItem
+                                    key={i}
+                                    roundAvatar
+                                    title={hotel.title}
+                                    
+                                />
+                                </TouchableHighlight>
+                            );
+                        })
+                    }
+                </Card>
+                </ScrollView>
 
             </View>
         )
     }
 
     getHotels = async (input) => {
-        
-        const {city} = this.props
+
+        const { city } = this.props
         try {
             let response = await fetch(
                 `http://be-travel-planning-app.herokuapp.com/api/cities/${city}/hotels?search=${input}`
             );
-            let responseJson = await response.json();
-            this.setState({ items: responseJson })
-            // return responseJson;
+            let { items } = await response.json();
+            this.setState({ items })
+           
         } catch (error) {
             console.error(error);
         }
     }
 
-    handleInput = (event) => {
-        let value = event.target.value;
-        this.setState({ value });
+    addHotelObj = (hotel) => {
+        this.props.addHotel(hotel)
+        this.setState({text: '', items: []})
     }
+
 
     onClick = () => {
         const text = this.state.text
         this.getHotels(text)
     }
-   
-    
 }
 
 
 const styles = StyleSheet.create({
 
-    general: {
-        backgroundColor: '#3a7daf'
-    },
+general: {
+backgroundColor: '#3a7daf'
+},
 
-    container: {
-        padding: 10,
-        marginTop: 3,
-        marginBottom: 0,
-        marginLeft: 10,
-        marginRight: 10,
-        backgroundColor: 'white',
-        alignItems: 'center',
-        borderBottomWidth: 2,
-        borderColor: '#3a7daf',
+container: {
+padding: 10,
+marginTop: 3,
+marginBottom: 0,
+marginLeft: 10,
+marginRight: 10,
+backgroundColor: 'white',
+alignItems: 'center',
+borderBottomWidth: 2,
+borderColor: '#3a7daf',
 
-    },
+},
 
-    text: {
-        color: 'black',
-        fontSize: 20,
-        textAlign: 'center',
-        textAlignVertical: 'auto',
-        marginTop: 20
-    },
+text: {
+color: 'black',
+fontSize: 20,
+textAlign: 'center',
+textAlignVertical: 'auto',
+marginTop: 20
+},
 
-    swipeoutView: {
-        height: 80,
-        backgroundColor: 'white',
-        borderBottomWidth: .3,
-        borderColor: '#3a7daf',
-        margin: 10
-    },
+swipeoutView: {
+height: 80,
+backgroundColor: 'white',
+borderBottomWidth: .3,
+borderColor: '#3a7daf',
+margin: 10
+},
 
-    button: {
-        backgroundColor: 'white',
-        borderColor: '#3a7daf',
-    },
+button: {
+backgroundColor: 'white',
+borderColor: '#3a7daf',
+},
 
-    buttongroup: {
-        backgroundColor: 'white',
-        borderColor: 'white',
-    },
+buttongroup: {
+backgroundColor: 'white',
+borderColor: 'white',
+},
 
-    buttonTimeline: {
-        backgroundColor: 'white',
-        borderBottomRightRadius: 50,
-        margin: 10
+buttonTimeline: {
+backgroundColor: 'white',
+borderBottomRightRadius: 50,
+margin: 10
 
-    },
+},
 
-    textSlide: {
-        fontWeight: 'bold',
-        color: '#3a7daf'
-    }
+textSlide: {
+fontWeight: 'bold',
+color: '#3a7daf'
+}
 })
-
-
-
-
-
 
 

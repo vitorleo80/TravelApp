@@ -30,11 +30,8 @@ export default class SingleTimeLine extends React.Component {
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
     _handleDatePicked = (date) => {
-        console.log(date, 'param')
         const time = moment(date).format('HH:mm')
-        console.log(time, '**format')
-
-
+        console.log(time)
         const activities = this.props.timeline.map((activity) => {
             if (activity.id === this.state.selected.id) activity = { ...activity, time }
             return activity
@@ -47,8 +44,17 @@ export default class SingleTimeLine extends React.Component {
 
     };
 
+    // _handleDatePicked = (date) => {
+    //     const time = moment(date).format('hh:mm')
+    //     const activities = this.props.timeline.map((activity) => {
+    //         if (activity.id === this.state.selected.id) activity = { ...activity, time }
+    //         return activity
+    //     })
+    //     this.props.ajustTime(activities)
+    //     this._hideDateTimePicker();
+    // };
 
-    //test
+
 
     render() {
 
@@ -183,15 +189,3 @@ const styles = StyleSheet.create({
     },
 
 });
-
-
-
-
-
-
-
-
-
-
-
-

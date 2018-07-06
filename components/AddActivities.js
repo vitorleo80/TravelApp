@@ -128,6 +128,7 @@ export default class AddActivities extends Component {
         </ScrollView>
 
         <PopupDialog
+          height={450}
           ref={(popupDialog) => {
             this.scaleAnimationDialog = popupDialog;
           }}

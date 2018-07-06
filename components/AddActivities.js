@@ -4,7 +4,7 @@ import { Font, AppLoading } from 'expo';
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf';
 import { Card, ListItem, Icon, ButtonGroup, Button, SearchBar } from 'react-native-elements';
 import CityHeader from './CityHeader';
-import PopupDialog, { DialogTitle, DialogButton} from 'react-native-popup-dialog';
+import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialog';
 import Search from './Search'
 
 
@@ -15,7 +15,7 @@ export default class AddActivities extends Component {
     activities: [],
     fontsAreLoaded: false,
     dialogShow: false,
-    hotel:{}
+    hotel: {}
   }
 
   componentDidMount = async () => {
@@ -47,7 +47,7 @@ export default class AddActivities extends Component {
       <Button
         buttonStyle={styles.button}
         icon={{
-          name: 'call-split',
+          name: 'hotel',
           size: 35,
           color: '#3a7daf'
         }}
@@ -126,26 +126,26 @@ export default class AddActivities extends Component {
           })}
         </ScrollView>
 
- <PopupDialog
+        <PopupDialog
           ref={(popupDialog) => {
             this.scaleAnimationDialog = popupDialog;
           }}
           dialogTitle={<DialogTitle title="Please search your Hotel" />}
-          // actions={[
-          //   <DialogButton
-          //     text="DISMISS"
-          //     onPress={() => {
-          //       this.scaleAnimationDialog.dismiss();
-          //     }}
-          //     key="button-1"
-          //   />,
-          // ]}
+        // actions={[
+        //   <DialogButton
+        //     text="DISMISS"
+        //     onPress={() => {
+        //       this.scaleAnimationDialog.dismiss();
+        //     }}
+        //     key="button-1"
+        //   />,
+        // ]}
         >
           <View>
-            <Search city={city} addHotel={this.addHotel}/>
-            </View>
+            <Search city={city} addHotel={this.addHotel} />
+          </View>
         </PopupDialog>
-        
+
       </View>
     );
   }
@@ -194,7 +194,7 @@ export default class AddActivities extends Component {
 
   addHotel = (hotel) => {
     console.log(hotel)
-    this.setState({hotel})
+    this.setState({ hotel })
     this.closeDialog()
   }
 

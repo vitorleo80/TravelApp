@@ -51,10 +51,10 @@ export default class AddActivities extends Component {
           size: 35,
           color: '#3a7daf'
         }}
-        // title='Hotel'
         onPress={this.showScaleAnimationDialog}
       >
       </Button>
+
     const component2 = () =>
       <Button
         buttonStyle={styles.button}
@@ -63,10 +63,11 @@ export default class AddActivities extends Component {
           size: 35,
           color: '#3a7daf'
         }}
-        // title='List'
+
         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction, city: city, hotel: this.state.hotel })}
       >
       </Button>
+
     const component3 = () =>
       <Button
         buttonStyle={styles.button}
@@ -75,7 +76,7 @@ export default class AddActivities extends Component {
           size: 35,
           color: '#3a7daf'
         }}
-        // title='Trip'
+
         onPress={() => this.props.navigation.navigate('TimeLines', { activities: this.state.activities, city: city, hotel: this.state.hotel })}
       >
       </Button>
@@ -131,15 +132,6 @@ export default class AddActivities extends Component {
             this.scaleAnimationDialog = popupDialog;
           }}
           dialogTitle={<DialogTitle title="Please search your Hotel" />}
-        // actions={[
-        //   <DialogButton
-        //     text="DISMISS"
-        //     onPress={() => {
-        //       this.scaleAnimationDialog.dismiss();
-        //     }}
-        //     key="button-1"
-        //   />,
-        // ]}
         >
           <View>
             <Search city={city} addHotel={this.addHotel} />

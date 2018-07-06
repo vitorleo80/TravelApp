@@ -114,7 +114,8 @@ export default class Search extends Component {
 const styles = StyleSheet.create({
 
     general: {
-        backgroundColor: '#3a7daf'
+        backgroundColor: '#3a7daf',
+
     },
 
     container: {
@@ -127,6 +128,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderBottomWidth: 2,
         borderColor: '#3a7daf',
+
 
     },
 

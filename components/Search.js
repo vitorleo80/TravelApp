@@ -8,7 +8,7 @@ import { StyleSheet, View, ScrollView, TouchableHighlight } from 'react-native';
 export default class Search extends Component {
 
     state = {
-     
+
         items: [],
         text: '',
         input: '',
@@ -16,7 +16,7 @@ export default class Search extends Component {
     }
 
     componentDidMount = async () => {
-        
+
         try {
             await Font.loadAsync({
                 MaterialIcons,
@@ -50,7 +50,7 @@ export default class Search extends Component {
                 <Button
                     buttonStyle={styles.button}
                     icon={{
-                        name: 'flight-takeoff',
+                        name: 'search',
                         size: 35,
                         color: '#3a7daf'
                     }}
@@ -58,25 +58,25 @@ export default class Search extends Component {
                     onPress={this.onClick}
                 >
                 </Button>
-                
+
                 <ScrollView>
-                <Card containerStyle={{ padding: 0 }} >
-                    {
-                        list.length >= 1 &&
-                        list.map((hotel, i) => {
-                            return (
-                                <TouchableHighlight key={`touch${i}`} onPress={() => this.addHotelObj(hotel)}>
-                                <ListItem
-                                    key={i}
-                                    roundAvatar
-                                    title={hotel.title}
-                                    
-                                />
-                                </TouchableHighlight>
-                            );
-                        })
-                    }
-                </Card>
+                    <Card containerStyle={{ padding: 0 }} >
+                        {
+                            list.length >= 1 &&
+                            list.map((hotel, i) => {
+                                return (
+                                    <TouchableHighlight key={`touch${i}`} onPress={() => this.addHotelObj(hotel)}>
+                                        <ListItem
+                                            key={i}
+                                            roundAvatar
+                                            title={hotel.title}
+
+                                        />
+                                    </TouchableHighlight>
+                                );
+                            })
+                        }
+                    </Card>
                 </ScrollView>
 
             </View>
@@ -92,7 +92,7 @@ export default class Search extends Component {
             );
             let { items } = await response.json();
             this.setState({ items })
-           
+
         } catch (error) {
             console.error(error);
         }
@@ -100,7 +100,7 @@ export default class Search extends Component {
 
     addHotelObj = (hotel) => {
         this.props.addHotel(hotel)
-        this.setState({text: '', items: []})
+        this.setState({ text: '', items: [] })
     }
 
 
@@ -113,60 +113,60 @@ export default class Search extends Component {
 
 const styles = StyleSheet.create({
 
-general: {
-backgroundColor: '#3a7daf'
-},
+    general: {
+        backgroundColor: '#3a7daf'
+    },
 
-container: {
-padding: 10,
-marginTop: 3,
-marginBottom: 0,
-marginLeft: 10,
-marginRight: 10,
-backgroundColor: 'white',
-alignItems: 'center',
-borderBottomWidth: 2,
-borderColor: '#3a7daf',
+    container: {
+        padding: 10,
+        marginTop: 3,
+        marginBottom: 0,
+        marginLeft: 10,
+        marginRight: 10,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        borderBottomWidth: 2,
+        borderColor: '#3a7daf',
 
-},
+    },
 
-text: {
-color: 'black',
-fontSize: 20,
-textAlign: 'center',
-textAlignVertical: 'auto',
-marginTop: 20
-},
+    text: {
+        color: 'black',
+        fontSize: 20,
+        textAlign: 'center',
+        textAlignVertical: 'auto',
+        marginTop: 20
+    },
 
-swipeoutView: {
-height: 80,
-backgroundColor: 'white',
-borderBottomWidth: .3,
-borderColor: '#3a7daf',
-margin: 10
-},
+    swipeoutView: {
+        height: 80,
+        backgroundColor: 'white',
+        borderBottomWidth: .3,
+        borderColor: '#3a7daf',
+        margin: 10
+    },
 
-button: {
-backgroundColor: 'white',
-borderColor: '#3a7daf',
-},
+    button: {
+        backgroundColor: 'white',
+        borderColor: '#3a7daf',
+    },
 
-buttongroup: {
-backgroundColor: 'white',
-borderColor: 'white',
-},
+    buttongroup: {
+        backgroundColor: 'white',
+        borderColor: 'white',
+    },
 
-buttonTimeline: {
-backgroundColor: 'white',
-borderBottomRightRadius: 50,
-margin: 10
+    buttonTimeline: {
+        backgroundColor: 'white',
+        borderBottomRightRadius: 50,
+        margin: 10
 
-},
+    },
 
-textSlide: {
-fontWeight: 'bold',
-color: '#3a7daf'
-}
+    textSlide: {
+        fontWeight: 'bold',
+        color: '#3a7daf'
+    }
 })
 
 

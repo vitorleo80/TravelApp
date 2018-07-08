@@ -30,13 +30,14 @@ With Tripster you select a city you'd like to go to, and you get an immediate li
 git clone https://github.com/vitorleo80/TravelApp.git
 ```
 
-2. Install [Node]
+2. Install Node
 
-You'll need [node] (https://nodejs.org) installed in your machine. By running this command line on your terminal you'll know if you have node already installed and what version.
+You'll need Node (https://nodejs.org) installed in your machine. By running this command line on your terminal you'll know if you have node already installed and what version.
 
+
+```
 node -v
-
-If you don't have it, I recommend to follow this tutorial: https://changelog.com/posts/install-node-js-with-homebrew-on-os-x
+```
 
 3. In integrated terminal run following commands to install dependencies.
 
@@ -53,9 +54,7 @@ npm start
 5. Open app with [Expo Desktop Client](https://docs.expo.io/versions/v16.0.0/index.html)
   - If you have never used Expo before, click [here](https://docs.expo.io/versions/v16.0.0/introduction/installation.html) to install it.
   - Then create a new account on the Expo Desktop client that you just installed. Follow [this](https://docs.expo.io/versions/v16.0.0/guides/up-and-running.html#create-an-account) if you need help.
-  - Then click `Project` -> `Open Project` and select the examples folder from Step 2 above.
   - Finally run the app on simulator or your device.
-
 
 
 ## Built With:
@@ -68,10 +67,13 @@ Feel free to open an issue for any setup query
 ## Back End Repo:
 Please find the Back End repo at https://github.com/vitorleo80/travel-planning-app-BE
 
+## Images:
+
+
 
 <div style="display: flex; flex-direction: row; margin-bottom: 20px">
-<img src="https://res.cloudinary.com/dbg0gmsjs/image/upload/v1531083236/screens.png" width="300" />
-<img src="https://res.cloudinary.com/dbg0gmsjs/image/upload/v1531083240/SLIDE-6.png" width="300" />
+<img src="https://res.cloudinary.com/dbg0gmsjs/image/upload/v1531083236/screens.png" width="600" />
+<img src="https://res.cloudinary.com/dbg0gmsjs/image/upload/v1531083240/SLIDE-6.png" width="600" />
 </div>
 <!-- <div style="display: flex; flex-direction: row; margin-top: 20px">
 <img src="https://user-images.githubusercontent.com/7840686/32702791-b947eedc-c7a0-11e7-8e8c-7dff1bd80564.gif" width="300" />

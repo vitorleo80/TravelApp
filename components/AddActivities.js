@@ -186,7 +186,6 @@ export default class AddActivities extends Component {
   }
 
   addHotel = (hotel) => {
-    console.log(hotel)
     this.setState({ hotel })
     this.closeDialog()
   }
